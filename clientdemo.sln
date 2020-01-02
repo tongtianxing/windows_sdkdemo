@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clientdemo", "clientdemo.vcxproj", "{79068A3E-8714-91DA-C272-E7D686829DB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		debugu|Win32 = debugu|Win32
+		Release|Win32 = Release|Win32
+		releaseu|Win32 = releaseu|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.Debug|Win32.Build.0 = Debug|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.debugu|Win32.ActiveCfg = debugu|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.debugu|Win32.Build.0 = debugu|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.Release|Win32.ActiveCfg = Release|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.Release|Win32.Build.0 = Release|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.releaseu|Win32.ActiveCfg = releaseu|Win32
+		{79068A3E-8714-91DA-C272-E7D686829DB7}.releaseu|Win32.Build.0 = releaseu|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

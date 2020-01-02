@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9e379a5f-9a67-4d39-ae87-bb8d877299c4}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{807854c5-47b2-4210-95bc-d0f62cb50cde}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{52dbe336-dce4-4f5f-9b9d-fed92b988a47}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="DEV">
+      <UniqueIdentifier>{fe420f1e-e005-4921-a95b-9061d410f2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lock">
+      <UniqueIdentifier>{1701f9c1-6043-4f67-b4ac-f56e195b1a8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="video">
+      <UniqueIdentifier>{7da9d004-4cf4-4dc1-921d-9899c2b1827a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playback">
+      <UniqueIdentifier>{5493307c-5899-4815-ba10-bcd622bac280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="file play">
+      <UniqueIdentifier>{dccd0e1d-33c3-4b07-b190-d3a547b619f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search">
+      <UniqueIdentifier>{2eb94479-7dd8-4d44-88af-6fad68adb4a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subscription">
+      <UniqueIdentifier>{dff5d0ee-a2c3-44d8-bee1-696f250637ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subscription\Subscription Base">
+      <UniqueIdentifier>{778d1fb6-7001-497e-89b4-dcf74fd69dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subscription\Subscription Device Alarm">
+      <UniqueIdentifier>{0f5fc4e6-4e57-4407-a1f2-c5f5459b880b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subscription\Subscription Device Status">
+      <UniqueIdentifier>{f1166e2f-3047-4703-ae44-91efb7503e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="audio">
+      <UniqueIdentifier>{c3746b39-692b-4ae8-819c-ba73fbee1798}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="clientdemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clientdemoDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDevList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgGetDevIP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLogin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLogQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPaneView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPlayback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTrackBack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTransParam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DevBase.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="DevMoblie.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryDevice.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="VDvsDevice.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="VMgrDevice.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="MutexLock.cpp">
+      <Filter>lock</Filter>
+    </ClCompile>
+    <ClCompile Include="PVFrameWnd.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="PVVideoWnd.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="PVViewWnd.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="GPSStatusParse.cpp">
+      <Filter>Subscription\Subscription Device Status</Filter>
+    </ClCompile>
+    <ClCompile Include="SubVehiStatus.cpp">
+      <Filter>Subscription\Subscription Device Status</Filter>
+    </ClCompile>
+    <ClCompile Include="AlarmTypeParse.cpp">
+      <Filter>Subscription\Subscription Device Alarm</Filter>
+    </ClCompile>
+    <ClCompile Include="SubVehiAlarm.cpp">
+      <Filter>Subscription\Subscription Device Alarm</Filter>
+    </ClCompile>
+    <ClCompile Include="SubVehi.cpp">
+      <Filter>Subscription\Subscription Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Search.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackSearch.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgRecPlayback.cpp">
+      <Filter>playback</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgRecPlaybackControl.cpp">
+      <Filter>playback</Filter>
+    </ClCompile>
+    <ClCompile Include="Playback.cpp">
+      <Filter>playback</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPlay.cpp">
+      <Filter>file play</Filter>
+    </ClCompile>
+    <ClCompile Include="SliCtrlEx.cpp">
+      <Filter>file play</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSnapshot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DevStatus.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleBaseMgr.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleBase.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="SvrVer.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTransData.cpp">
+      <Filter>DEV</Filter>
+    </ClCompile>
+    <ClCompile Include="DownSnapshot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DownObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VoiceBroadcast.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="VoiceMonitor.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="VoiceTalkback.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPanePtz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgParamConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSendFileToDev.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgParamerConf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLoading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAueAlcoholSetup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAueCheckedSetup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAueCoordinateSetup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAueWifiSetup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="clientdemo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlgPaneView.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadThread.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clientdemo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clientdemoDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="commondef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDevList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgGetDevIP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLogin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLogQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPlayback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTrackBack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTransParam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LangCmsCnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DevBase.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="DevMgrDef.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="DevMoblie.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryDevice.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="VDvsDevice.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="VMgrDevice.h">
+      <Filter>DEV</Filter>
+    </ClInclude>
+    <ClInclude Include="MutexLock.h">
+      <Filter>lock</Filter>
+    </ClInclude>
+    <ClInclude Include="PVFrameWnd.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="PVVideoWnd.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="PVViewWnd.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="GPSStatusParse.h">
+      <Filter>Subscription\Subscription Device Status</Filter>
+    </ClInclude>
+    <ClInclude Include="SubVehiStatus.h">
+      <Filter>Subscription\Subscription Device Status</Filter>
+    </ClInclude>
+    <ClInclude Include="AlarmTypeParse.h">
+      <Filter>Subscription\Subscription Device Alarm</Filter>
+    </ClInclude>
+    <ClInclude Include="SubVehiAlarm.h">
+      <Filter>Subscription\Subscription Device Alarm</Filter>
+    </ClInclude>
+    <ClInclude Include="SubVehi.h">
+      <Filter>Subscription\Subscription Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Search.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackSearch.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgRecPlayback.h">
+      <Filter>playback</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgRecPlaybackControl.h">
+      <Filter>playback</Filter>
+    </ClInclude>
+    <ClInclude Include="Playback.h">
+      <Filter>playback</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPlay.h">
+      <Filter>file play</Filter>
+    </ClInclude>
+    <ClInclude Include="SliCtrlEx.h">
+      <Filter>file play</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSnapshot.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DownSnapshot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DownObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VoiceBroadcast.h">
+      <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="VoiceMonitor.h">
+      <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="VoiceTalkback.h">
+      <Filter>audio</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPanePtz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgParamConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSendFileToDev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgParamerConf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLoading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAueAlcoholSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAueCheckedSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAueCoordinateSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAueWifiSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\clientdemo.ico">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\clientdemo.rc2">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

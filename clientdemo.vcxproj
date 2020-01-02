@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debugu|Win32">
+      <Configuration>debugu</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="releaseu|Win32">
+      <Configuration>releaseu</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\bin</OutDir>
+    <IntDir>d:\0Build\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'">
+    <OutDir>.\../../../../Build/Client/Client/clientdemo/Release\</OutDir>
+    <IntDir>.\../../../../Build/Client/Client/clientdemo/Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\bin</OutDir>
+    <IntDir>d:\0Build\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'">
+    <OutDir>.\../../../../Build/Client/Client/clientdemo/Debug\</OutDir>
+    <IntDir>.\../../../../Build/Client/Client/clientdemo/Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>include/control;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\../../../../Build/Client/Client/clientdemo/Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\../../../../Build/Client/Client/clientdemo/Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\../../../../Build/Client/Client/clientdemo/Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>lib/control;lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>../../control/include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\../../../../Build/Client/Client/clientdemo/Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\../../../../Build/Client/Client/clientdemo/Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\../../../../Build/Client/Client/clientdemo/Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\../../../../Build/Client/Client/clientdemo/Release\clientdemo.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>bin/clientdemo.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../control/lib;lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>include/control;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\../../../../Build/Client/Client/clientdemo/Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\../../../../Build/Client/Client/clientdemo/Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\../../../../Build/Client/Client/clientdemo/Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>lib/control;lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>../../control/include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\../../../../Build/Client/Client/clientdemo/Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\../../../../Build/Client/Client/clientdemo/Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\../../../../Build/Client/Client/clientdemo/Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\../../../../Build/Client/Client/clientdemo/Debug\clientdemo.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>bin/clientdemo.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../control/lib;lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="clientdemo.cpp" />
+    <ClCompile Include="clientdemoDlg.cpp" />
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="CommonFun.cpp" />
+    <ClCompile Include="DevStatus.cpp" />
+    <ClCompile Include="DlgAueAlcoholSetup.cpp" />
+    <ClCompile Include="DlgAueCheckedSetup.cpp" />
+    <ClCompile Include="DlgAueCoordinateSetup.cpp" />
+    <ClCompile Include="DlgAueWifiSetup.cpp" />
+    <ClCompile Include="DlgDevList.cpp" />
+    <ClCompile Include="DlgGetDevIP.cpp" />
+    <ClCompile Include="DlgLoading.cpp" />
+    <ClCompile Include="DlgLogin.cpp" />
+    <ClCompile Include="DlgLogQuery.cpp" />
+    <ClCompile Include="DlgPanePtz.cpp" />
+    <ClCompile Include="DlgPaneView.cpp" />
+    <ClCompile Include="DlgParamConfig.cpp" />
+    <ClCompile Include="DlgParamerConf.cpp" />
+    <ClCompile Include="DlgPlayback.cpp" />
+    <ClCompile Include="DlgSendFileToDev.cpp" />
+    <ClCompile Include="DlgSN.cpp" />
+    <ClCompile Include="DlgSnapshot.cpp" />
+    <ClCompile Include="DlgTrackBack.cpp" />
+    <ClCompile Include="DlgTransData.cpp" />
+    <ClCompile Include="DlgTransParam.cpp" />
+    <ClCompile Include="DownObject.cpp" />
+    <ClCompile Include="DownSnapshot.cpp" />
+    <ClCompile Include="LoadThread.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='releaseu|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='debugu|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="DevBase.cpp" />
+    <ClCompile Include="DevMoblie.cpp" />
+    <ClCompile Include="FactoryDevice.cpp" />
+    <ClCompile Include="SvrVer.cpp" />
+    <ClCompile Include="VDvsDevice.cpp" />
+    <ClCompile Include="VehicleBase.cpp" />
+    <ClCompile Include="VehicleBaseMgr.cpp" />
+    <ClCompile Include="VMgrDevice.cpp" />
+    <ClCompile Include="MutexLock.cpp" />
+    <ClCompile Include="PVFrameWnd.cpp" />
+    <ClCompile Include="PVVideoWnd.cpp" />
+    <ClCompile Include="PVViewWnd.cpp" />
+    <ClCompile Include="GPSStatusParse.cpp" />
+    <ClCompile Include="SubVehiStatus.cpp" />
+    <ClCompile Include="AlarmTypeParse.cpp" />
+    <ClCompile Include="SubVehiAlarm.cpp" />
+    <ClCompile Include="SubVehi.cpp" />
+    <ClCompile Include="Search.cpp" />
+    <ClCompile Include="TrackSearch.cpp" />
+    <ClCompile Include="DlgRecPlayback.cpp" />
+    <ClCompile Include="DlgRecPlaybackControl.cpp" />
+    <ClCompile Include="Playback.cpp" />
+    <ClCompile Include="DlgPlay.cpp" />
+    <ClCompile Include="SliCtrlEx.cpp" />
+    <ClCompile Include="VoiceBroadcast.cpp" />
+    <ClCompile Include="VoiceMonitor.cpp" />
+    <ClCompile Include="VoiceTalkback.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="clientdemo.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlgAueAlcoholSetup.h" />
+    <ClInclude Include="DlgAueCheckedSetup.h" />
+    <ClInclude Include="DlgAueCoordinateSetup.h" />
+    <ClInclude Include="DlgAueWifiSetup.h" />
+    <ClInclude Include="DlgLoading.h" />
+    <ClInclude Include="DlgPanePtz.h" />
+    <ClInclude Include="DlgPaneView.h" />
+    <ClInclude Include="DlgParamConfig.h" />
+    <ClInclude Include="DlgParamerConf.h" />
+    <ClInclude Include="DlgSendFileToDev.h" />
+    <ClInclude Include="DlgSN.h" />
+    <ClInclude Include="DlgSnapshot.h" />
+    <ClInclude Include="DownObject.h" />
+    <ClInclude Include="DownSnapshot.h" />
+    <ClInclude Include="LoadThread.h" />
+    <ClInclude Include="clientdemo.h" />
+    <ClInclude Include="clientdemoDlg.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="commondef.h" />
+    <ClInclude Include="CommonFun.h" />
+    <ClInclude Include="DlgDevList.h" />
+    <ClInclude Include="DlgGetDevIP.h" />
+    <ClInclude Include="DlgLogin.h" />
+    <ClInclude Include="DlgLogQuery.h" />
+    <ClInclude Include="DlgPlayback.h" />
+    <ClInclude Include="DlgTrackBack.h" />
+    <ClInclude Include="DlgTransParam.h" />
+    <ClInclude Include="LangCmsCnt.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="DevBase.h" />
+    <ClInclude Include="DevMgrDef.h" />
+    <ClInclude Include="DevMoblie.h" />
+    <ClInclude Include="FactoryDevice.h" />
+    <ClInclude Include="VDvsDevice.h" />
+    <ClInclude Include="VMgrDevice.h" />
+    <ClInclude Include="MutexLock.h" />
+    <ClInclude Include="PVFrameWnd.h" />
+    <ClInclude Include="PVVideoWnd.h" />
+    <ClInclude Include="PVViewWnd.h" />
+    <ClInclude Include="GPSStatusParse.h" />
+    <ClInclude Include="SubVehiStatus.h" />
+    <ClInclude Include="AlarmTypeParse.h" />
+    <ClInclude Include="SubVehiAlarm.h" />
+    <ClInclude Include="SubVehi.h" />
+    <ClInclude Include="Search.h" />
+    <ClInclude Include="TrackSearch.h" />
+    <ClInclude Include="DlgRecPlayback.h" />
+    <ClInclude Include="DlgRecPlaybackControl.h" />
+    <ClInclude Include="Playback.h" />
+    <ClInclude Include="DlgPlay.h" />
+    <ClInclude Include="SliCtrlEx.h" />
+    <ClInclude Include="VoiceBroadcast.h" />
+    <ClInclude Include="VoiceMonitor.h" />
+    <ClInclude Include="VoiceTalkback.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\clientdemo.ico" />
+    <CustomBuild Include="res\clientdemo.rc2">
+      <FileType>RC</FileType>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="clientdemo.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
