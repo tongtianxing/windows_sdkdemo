@@ -28,7 +28,7 @@ public:
 	//Get variable
 	static CSearch* GetNewRecSearch(int nSrcType, int nFileType = GPS_FILE_ATTRIBUTE_RECORD);
 	void SetWndAndMsg(HWND hWnd, int nSearchMsgCB, int nSearchFileCB);
-	long GetHandle() { return m_lHandle; }
+	LONG_PTR GetHandle() { return m_lHandle; }
 
 public:
 	//Search
@@ -45,7 +45,7 @@ protected:
 	void	DoSearchFileCB(GPSFile_S* pFile);
 
 protected:
-	long	m_lHandle;
+	LONG_PTR	m_lHandle;
 	int		m_nSearchType;
 	HWND	m_hWnd;
 	int		m_nSearchMsgCB;
@@ -92,7 +92,7 @@ protected:
 	void	DoDownMsgCB(int nMsg, int nParam);
 	
 private:
-	long	m_lDownHandle;
+	LONG_PTR	m_lDownHandle;
 	int		m_nFileType;
 	HWND	m_hWnd;
 	int		m_nMsg;

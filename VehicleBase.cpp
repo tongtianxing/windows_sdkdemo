@@ -696,12 +696,12 @@ void CVehicleBase::ParseCurGPS()
 // 		}
 // 	}
 }
-void CVehicleBase::FUNParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, long lUserData, void* pUsr)
+void CVehicleBase::FUNParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, LONG_PTR lUserData, void* pUsr)
 {
 	CVehicleBase* pThis = (CVehicleBase*)pUsr;
 	pThis->DoParseAddressCB(bSuc, szAddress, szCity, lUserData);
 }
-void CVehicleBase::DoParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, long lUserData)
+void CVehicleBase::DoParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, LONG_PTR lUserData)
 {
 	{
 		BOOL bValid = bSuc && _tcsclen(szAddress) > 0 ? TRUE : FALSE;
@@ -942,7 +942,7 @@ int CVehicleBase::GetMainDevID()
 
 int CVehicleBase::GetDevCount()
 {
-	return m_lstDevice.size();
+	return (int)m_lstDevice.size();
 }
 
 

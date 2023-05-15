@@ -206,7 +206,7 @@ void CDlgDevList::InitTree()
 		CVehicleBase* pDevice = (*iterB).second;
 		HTREEITEM hNew = NULL;
 		hNew = m_treeDevice.InsertItem(pDevice->GetShowName(), hNew);
-		m_treeDevice.SetItemData(hNew, (DWORD)pDevice);
+		m_treeDevice.SetItemData(hNew, (DWORD_PTR)pDevice);
 		if (m_bShowChan)
 		{
 			for (int i = 0; i < pDevice->GetChannelNum(); ++ i)

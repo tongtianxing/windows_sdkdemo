@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "clientdemo.h"
 #include "Playback.h"
+#include <algorithm>
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -95,6 +96,16 @@ int CPlayback::Down(GPSFile_S* pFile, int nChannel, int nBegMinSecond, int nEndM
 	{
 		m_File = *pFile;
 		m_nChannel = nChannel;
+		if (pFile->bStream)
+		{
+			int nCount = (int)std::count(pFile->szFile, pFile->szFile + strlen(pFile->szFile), ';');
+			if (nCount > 6)
+			{
+				char szCh[16] = { 0 };
+				sprintf_s(szCh, ";%d", nChannel);
+				strcat_s(m_File.szFile, szCh);
+			}
+		}
 	}
 	return NETMEDIA_PBStartDown(m_lPlayback, &m_File, m_nChannel, nBegMinSecond, nEndMinSecond
 		, bPlayOnlyIFrame, pSaveFile, bResumeDown);	

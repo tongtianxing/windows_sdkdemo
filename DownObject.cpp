@@ -82,7 +82,7 @@ void CDownObject::DoDataCB(const char* pData, int nDataLen, long nPos)
 			int nWriteLen = nPos - nCurPos;
 			char* pTempBuf = new char[nWriteLen];
 			memset(pTempBuf, 0, nWriteLen);
-			int nFileWriteLen = fwrite(pTempBuf, 1, nWriteLen, m_pFile);
+			int nFileWriteLen = (int)fwrite(pTempBuf, 1, nWriteLen, m_pFile);
 			SAFE_DELETE_ARRAY(pTempBuf);
 		}
 		else if (nPos < nCurPos)

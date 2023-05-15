@@ -48,7 +48,7 @@ protected:
 	void	DoVoiceComMsg(int nMsg);	
 
 private:
-	long	m_lVoiceCom;
+	LONG_PTR	m_lVoiceCom;
 	HWND	m_hVoiceHwnd;
 	UINT	m_uiVoiceMsg;
 };

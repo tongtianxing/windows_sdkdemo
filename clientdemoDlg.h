@@ -76,7 +76,7 @@ protected:
 	afx_msg void OnButtonClearAlarm();
 	afx_msg void OnButtonPlayFile();
 	afx_msg void OnButtonDeviceLogSearch();
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnBtnReadStatus();
 	afx_msg void OnButtonTrns();
 	afx_msg void OnButtonAddSnapshot();
@@ -107,7 +107,7 @@ private:
 	static void CALLBACK FUNVehiRunningCB(GPSVehicleState_S* pVecRun, void* pUsr);
 	void	DoFUNVehiRunning(GPSVehicleState_S* pVecRun);
 
-	long	m_lVehiRun;
+	LONG_PTR	m_lVehiRun;
 
 	//video
 	CDlgPaneView*	m_pDlgPaneView;
@@ -139,14 +139,14 @@ private:
 	void	DoSnapshotPlanCB(int nType, void* pData);
 	static void WINAPI FUNSetDevSetCB(int nType, void* pData, void * pUsr);
 	void DoSetDevMsg(int nType, void* pData);
-	long m_lGetSnapshotPlan;
-	long m_lSetSnapshotPlan;
+	LONG_PTR m_lGetSnapshotPlan;
+	LONG_PTR m_lSetSnapshotPlan;
 
 	static void WINAPI FUNQueryMsgCB(int nMsg, void* pUsr);
 	void DoQueryMsgCB(int nMsg);
 	static void WINAPI FUNQueryDataCB(const char* pBuf, int nLen, void* pUsr);
 	void DoQueryDataCB(const char* pBuf, int nLen);
-	long m_lQueryTransparent;
+	LONG_PTR m_lQueryTransparent;
 
 	//snapshot
 	void DoAlarmSnapshotFinish(CDevBase* pDevice, GPSVehicleAlarm_S* pVehiAlarm);

@@ -50,7 +50,7 @@ protected:
 	void GetDevIP(GPSDeviceIDNO_S* pDevice, unsigned int nDevCount);
 	void EnableCtrl(BOOL bEnable);
 private:
-	long m_lHandle;
+	LONG_PTR m_lHandle;
 	GPSDeviceIDNO_S* m_pDevice;
 	int m_DevCount;
 };

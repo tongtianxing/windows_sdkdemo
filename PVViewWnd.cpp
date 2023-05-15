@@ -266,7 +266,7 @@ void CPVViewWnd::OnRButtonDown(UINT nFlags, CPoint point)
 	CWnd::OnRButtonDown(nFlags, point);
 }
 
-void CPVViewWnd::OnTimer(UINT nIDEvent) 
+void CPVViewWnd::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	if (LBTN_DRAG_TIMER == nIDEvent)

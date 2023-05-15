@@ -64,7 +64,7 @@ void CDlgTransData::OnButtonSet()
 		{
 			EnableCtrl(FALSE);
 			
-			NETCLIENT_MCTransparentPortData(pVehi->GetMainDevIDNO(), 0, szData, strlen(szData), this, FUNMCMsgCB, &m_lHandle);
+			NETCLIENT_MCTransparentPortData(pVehi->GetMainDevIDNO(), 0, szData, (int)strlen(szData), this, FUNMCMsgCB, &m_lHandle);
 		}
 	}
 }
@@ -92,7 +92,7 @@ void CDlgTransData::InitComb()
 		if (pVehi != NULL)
 		{
 			m_cmbDev.InsertString(nIndex, pVehi->GetShowName());
-			m_cmbDev.SetItemData(nIndex, DWORD(pVehi));
+			m_cmbDev.SetItemData(nIndex, DWORD_PTR(pVehi));
 			nIndex++;
 		}
 		iterB++;

@@ -43,12 +43,12 @@ protected:
 
 private:
 	TCHAR	m_szDevIDNO[32];
-	long	m_lTalkback;
+	LONG_PTR	m_lTalkback;
 	HWND	m_hTalkHwnd;
 	UINT	m_uiTalkMsg;
 	bool	m_bTBTrac;
 	FILE*	m_pFile;
-	long	m_lAudioDec;
+	LONG_PTR	m_lAudioDec;
 };
 
 CVoiceTalkback*		VOICETalkback();

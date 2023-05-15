@@ -64,13 +64,13 @@ private:
 	int m_nDevID;
 	CString m_strParamConfigFile;
 
-	long m_lGetParamHandle;
+	LONG_PTR m_lGetParamHandle;
 	FILE* m_pFile;
 
-	long m_lUploadHandle;
+	LONG_PTR m_lUploadHandle;
 	int m_nlpSvrID;
 
-	long m_lPromoteHanle;
+	LONG_PTR m_lPromoteHanle;
 	TCHAR m_szSvrFile[MAX_PATH];
 public:
 };

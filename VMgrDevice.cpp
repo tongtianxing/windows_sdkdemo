@@ -300,7 +300,7 @@ BOOL CVMgrDevice::GetGroupInfo(int nGroupID, GPSDEVGroup_S& DEVGroup, mapIDIRDEV
 int CVMgrDevice::GetGroup(mapDevGroup& mapGroup)
 {
 	mapGroup = m_mapDevGroup;
-	return mapGroup.size();
+	return (int)mapGroup.size();
 }
 
 // void CVMgrDevice::GetGroupDevEx(int nGroupID, mapIDIRDEVGroup& mapGroup, mapIDIRDEVInfo& mapDev)
@@ -416,7 +416,7 @@ int CVMgrDevice::GetAllOnlineDev(mapIDIRDEVInfo& mapDevInof, BOOL bOnline)
 		++ iterB;
 	}
 
-	return mapDevInof.size();
+	return (int)mapDevInof.size();
 }
 
 int	CVMgrDevice::GetAllOnlineDev(mapDvsDevice& mapDev, BOOL bOnline)
@@ -434,7 +434,7 @@ int	CVMgrDevice::GetAllOnlineDev(mapDvsDevice& mapDev, BOOL bOnline)
 		++ iterB;
 	}
 	
-	return mapDev.size();
+	return (int)mapDev.size();
 }
 
 int CVMgrDevice::GetAllDev(mapIDIRDEVInfo& mapDev)
@@ -449,18 +449,18 @@ int CVMgrDevice::GetAllDev(mapIDIRDEVInfo& mapDev)
 		mapDev.insert(mapIDIRDEVInfo::value_type(pDevice->GetID(), DevInfo));
 		++ iterB;
 	}
-	return mapDev.size();
+	return (int)mapDev.size();
 }
 
 int CVMgrDevice::GetAllDevMap(mapDvsDevice& mapDev)
 {
 	mapDev = m_mapDvsDevice;
-	return mapDev.size();
+	return (int)mapDev.size();
 }
 void CVMgrDevice::GetAllDev(GPSDeviceIDNO_S** ppDevice, int& nCount)
 {
 	CAutoLock	m_cs(m_LockDvsDev);
-	nCount = m_mapDvsDevice.size();
+	nCount = (int)m_mapDvsDevice.size();
 	if (nCount > 0)
 	{
 		*ppDevice = new GPSDeviceIDNO_S[nCount];
@@ -566,7 +566,7 @@ void CVMgrDevice::UpdateMgrMapDvsDevice(GPSDevInfo_S* pBaseInfo)
 
 int	CVMgrDevice::GetDeviceNum()
 {
-	return m_mapDvsDevice.size();
+	return (int)m_mapDvsDevice.size();
 }
 int	CVMgrDevice::GetOnlineDeviceNum()
 {

@@ -28,6 +28,10 @@ CDlgLogin::CDlgLogin(CWnd* pParent /*=NULL*/)
 	m_strPsw = _T("000000");
 	m_strIP = _T("114.55.118.196");
 
+	m_strUser = _T("tl0601");
+	m_strPsw = _T("000000");
+	m_strIP = _T("39.108.194.249");
+
 // #else
 // 	m_strUser = _T("han1");
 // 	m_strIP = _T("192.168.0.148");

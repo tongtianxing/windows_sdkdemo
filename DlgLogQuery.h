@@ -100,10 +100,10 @@ protected:
 	void InitTPDList();
 	void ShowTPD(GPSTranPortData_S* pAlarm);
 private:
-	long m_lTPDQuery;
-	long m_lAlarmQuery;
-	long m_lUserLogQuery;
-	long m_lDownUsrList;
+	LONG_PTR m_lTPDQuery;
+	LONG_PTR m_lAlarmQuery;
+	LONG_PTR m_lUserLogQuery;
+	LONG_PTR m_lDownUsrList;
 };
 
 //{{AFX_INSERT_LOCATION}}

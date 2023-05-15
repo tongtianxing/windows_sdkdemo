@@ -148,7 +148,7 @@ void GetIOAlarm(int nIO, GPSAlarmInfo_S& ArmInfo, CString& strType, CString& str
 		{
 			strTemp += pDev->GetDevInfo()->szIoInExtent[nIO - 9];
 		}
-		int nLen = _tcslen(strTemp);
+		int nLen = (int)_tcslen(strTemp);
 		if (nLen == 0)
 		{
 			CString strIO;

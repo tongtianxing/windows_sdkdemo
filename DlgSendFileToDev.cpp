@@ -132,7 +132,7 @@ void CDlgSendFileToDev::OnBtnFileDown()
 	BOOL bIsChangeMap = FALSE;
 
 	memset(&m_FileInfo,0,sizeof(GPSDEVUpgradeFile_S));
-	int nType = m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
+	int nType = (int)m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
 	CString strText = TEXT("file (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp|All file(*.*)|*.*||");
 	if (nType == SEND_FILE_TYPE_PICTURE)
 	{
@@ -232,7 +232,7 @@ BOOL CDlgSendFileToDev::FindDeviceItem(int nDevID)
 {
 	for (int index = 0; index < m_lstEquipPromote.GetItemCount(); index++)
 	{
-		int nID = m_lstEquipPromote.GetItemData(index);
+		int nID = (int)m_lstEquipPromote.GetItemData(index);
 		if (nDevID == nID)
 		{
 			return TRUE;
@@ -388,7 +388,7 @@ LRESULT CDlgSendFileToDev::OnMsgUpload(WPARAM wParam, LPARAM lParam)
 			break;
 		case GPS_UPLOAD_MSG_PROCESS:
 			{
-				SetUploadProcess(lParam);
+				SetUploadProcess((int)lParam);
 			}
 			break;
 		default:
@@ -420,7 +420,7 @@ BOOL CDlgSendFileToDev::CheckFilePic()
 		{
 			AfxMessageBox(_T("Image Err."));
 		}
-		SAFE_DELETE_OBJECT(pImg);
+		CImgBase::SDeleteImage(pImg);
 	}
 	return bRet;
 }
@@ -562,8 +562,8 @@ void CDlgSendFileToDev::OnBtnPromote()
 void CDlgSendFileToDev::StartContinuePromote()
 {
 	SetCtrlEnable(FALSE);
-	int nDevID = m_lstEquipPromote.GetItemData(m_nCurRow);  
-	int nFileType = m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
+	int nDevID = (int)m_lstEquipPromote.GetItemData(m_nCurRow);
+	int nFileType = (int)m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
 
 	CDevBase* pDev = CVMgrDevice::GetInstance()->FindDvsDeviceByID(nDevID);
 	NETCLIENT_DUOpenDevUploadFile(&m_lPromoteHanle, pDev->GetDevIDNOForChar(),
@@ -578,8 +578,8 @@ void CDlgSendFileToDev::StartPromote()
 {
 	SetCtrlEnable(FALSE);
 
-	int nDevID = m_lstEquipPromote.GetItemData(m_nCurRow); 
-	int nFileType = m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
+	int nDevID = (int)m_lstEquipPromote.GetItemData(m_nCurRow);
+	int nFileType = (int)m_cmbFlieType.GetItemData(m_cmbFlieType.GetCurSel());
 	m_lstEquipPromote.SetItemText(m_nCurRow,PROMOTE_COLUMN_DEV_STATE,_T("Sending"));//准备升级
 
 	CDevBase* pDev = CVMgrDevice::GetInstance()->FindDvsDeviceByID(nDevID);
@@ -635,7 +635,7 @@ void CDlgSendFileToDev::PromoteContinueNext()
 	if (strState != PROMTE_STATE_SUC)
 	{
 		//判断车辆是否在线
-		int nDevID = m_lstEquipPromote.GetItemData(m_nCurRow); 
+		int nDevID = (int)m_lstEquipPromote.GetItemData(m_nCurRow);
 		CDevBase* pDev = CVMgrDevice::GetInstance()->FindDvsDeviceByID(nDevID);
 		BOOL bOnline = pDev ? pDev->GetOnline() : FALSE;
 		if(!bOnline)
@@ -679,7 +679,7 @@ void CDlgSendFileToDev::PromoteNextDevice()
 	if (strState != PROMTE_STATE_SUC)
 	{
 		//判断车辆是否在线
-		int nDevID = m_lstEquipPromote.GetItemData(m_nCurRow); 
+		int nDevID = (int)m_lstEquipPromote.GetItemData(m_nCurRow);
 		CDevBase* pDev = CVMgrDevice::GetInstance()->FindDvsDeviceByID(nDevID);
 		BOOL bOnline = pDev ? pDev->GetOnline() : FALSE;
 		if(!bOnline)

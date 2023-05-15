@@ -68,8 +68,8 @@ public:
 	bool IsParseAddressGpsSame(int nJingDu, int nWeiDu);
 	
 	void ParseCurGPS();
-	static void CALLBACK FUNParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, long lUserData, void* pUsr);
-	void	DoParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, long lUserData);
+	static void CALLBACK FUNParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, LONG_PTR lUserData, void* pUsr);
+	void	DoParseAddressCB(BOOL bSuc, LPCTSTR szAddress, LPCTSTR szCity, LONG_PTR lUserData);
 	///////////////////////////////
 protected:	
 	long	m_lRegCount;

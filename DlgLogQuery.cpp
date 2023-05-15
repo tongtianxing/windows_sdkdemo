@@ -108,7 +108,7 @@ void CDlgLogQuery::OnButtonUserLogQuery()
 	int* pUserID = new int[nCount];
 	for (int i = 0; i < m_cmbUser.GetCount(); ++i)
 	{
-		pUserID[i] = m_cmbUser.GetItemData(i);
+		pUserID[i] = (int)m_cmbUser.GetItemData(i);
 	}
 	//time
 	SYSTEMTIME timeBeg;
@@ -146,7 +146,7 @@ void CDlgLogQuery::OnButtonTPD()
 	//IDNO
 	mapVehicleBase mapDev;
 	CVehicleBaseMgr::GetInstance()->GetAllDevMap(mapDev);
-	int nDevCount = mapDev.size();
+	int nDevCount = (int)mapDev.size();
 	if (nDevCount < 1)
 	{
 		return;
@@ -181,7 +181,7 @@ void CDlgLogQuery::OnButtonTPD()
 	timeEnd.wHour = m_TimeEnd.GetHour();
 	timeEnd.wMinute = m_TimeEnd.GetMinute();
 	timeEnd.wSecond = m_TimeEnd.GetSecond();
-	int nType = m_cmbTPD.GetItemData(m_cmbTPD.GetCurSel());
+	int nType = (int)m_cmbTPD.GetItemData(m_cmbTPD.GetCurSel());
 		
 	NETCLIENT_TPOpenTransPortData(&m_lTPDQuery, 0, 190);
 	NETCLIENT_TPSetTransPortMsgCB(m_lTPDQuery, this, FUNQueryMsgCB);
@@ -202,7 +202,7 @@ void CDlgLogQuery::OnButtonAlarmLogQuery()
 	//IDNO
 	mapVehicleBase mapDev;
 	CVehicleBaseMgr::GetInstance()->GetAllDevMap(mapDev);
-	int nDevCount = mapDev.size();
+	int nDevCount = (int)mapDev.size();
 	if (nDevCount < 1)
 	{
 		return;
@@ -245,7 +245,7 @@ void CDlgLogQuery::OnButtonAlarmLogQuery()
 	timeEnd.wSecond = m_TimeEnd.GetSecond();
 
 
-	int nAlarmType = m_cmbArmType.GetItemData(m_cmbArmType.GetCurSel());
+	int nAlarmType = (int)m_cmbArmType.GetItemData(m_cmbArmType.GetCurSel());
 
 	NETCLIENT_OpenAlarmQuery(&m_lAlarmQuery, 0, 190);
 	NETCLIENT_SetAlarmQueryMsgCB(m_lAlarmQuery, this, FUNQueryMsgCB);

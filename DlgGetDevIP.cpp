@@ -74,7 +74,7 @@ void CDlgGetDevIP::OnButtonSelDev()
 	if (dlg.DoModal() == IDOK)
 	{
 		lstIntID lst = dlg.GetDevList();
-		m_DevCount = lst.size();
+		m_DevCount = (int)lst.size();
 		if (lst.size() > 0)
 		{
 			SAFE_DELETE_OBJECT(m_pDevice);

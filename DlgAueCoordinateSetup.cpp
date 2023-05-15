@@ -124,7 +124,7 @@ BOOL CDlgAueCoordinateSetup::CheckParam()
 
 void CDlgAueCoordinateSetup::FillSetReq( char* pBuf, int& nSize )
 {
-	int nMapType = m_cmbMapType.GetItemData(m_cmbMapType.GetCurSel());
+	int nMapType = (int)m_cmbMapType.GetItemData(m_cmbMapType.GetCurSel());
 	double lfJingDu, lfWeiDu;
 	CString strTemp;
 	GetDlgItemText(IDC_ED_JINGDU, strTemp);

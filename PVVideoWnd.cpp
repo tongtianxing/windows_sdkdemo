@@ -215,7 +215,7 @@ BOOL CPVVideoWnd::PreTranslateMessage(MSG* pMsg)
 	return CWnd::PreTranslateMessage(pMsg);
 }
 
-void CPVVideoWnd::OnTimer(UINT nIDEvent) 
+void CPVVideoWnd::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	if (LBTN_SEL_TIMER == nIDEvent)

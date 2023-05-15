@@ -47,7 +47,7 @@ protected:
 	
 	int		m_nDevID;
 	int		m_nChn;
-	long	m_lHandle;
+	LONG_PTR	m_lHandle;
 
 	HWND	m_hDownHwnd;
 	UINT	m_uDownMsg;

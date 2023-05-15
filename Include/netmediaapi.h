@@ -187,10 +187,8 @@ NETMEDIA_API int	API_CALL	NETMEDIA_SFStartSearchFileEx(LONG_PTR lSearchHandle, i
 															 , int nYearE, int nMonthE, int nDayE, int nEndTime, int nRecType
 															 , int nChn, int nAlarmType=0);
 NETMEDIA_API int	API_CALL	NETMEDIA_SFStartSearchFileMoreEx(LONG_PTR lSearchHandle, GPSRecFileSearchParam_S* pParam);
-NETMEDIA_API int	API_CALL	NETMEDIA_SFStartSearchAlarmFile(LONG_PTR lSearchHandle, int nVehiID, const char* szGuid, int nYear, int nMonth, int nDay);
 NETMEDIA_API int	API_CALL	NETMEDIA_SFSetSearchParam(LONG_PTR lSearchHandle, int nParamType);
 NETMEDIA_API int	API_CALL	NETMEDIA_SFSetSearchCompanyID(LONG_PTR lSearchHandle, int nCompanyID);
-NETMEDIA_API int	API_CALL	NETMEDIA_SFSetSearchLabel(LONG_PTR lSearchHandle, const char* szLabel);
 NETMEDIA_API int	API_CALL	NETMEDIA_SFStopSearchFile(LONG_PTR lSearchHandle);
 NETMEDIA_API int	API_CALL	NETMEDIA_SFCloseSearchFile(LONG_PTR lSearchHandle);	
 
@@ -211,8 +209,6 @@ NETMEDIA_API int	API_CALL	NETMEDIA_DFCloseDownFile(LONG_PTR lDownHandle);
 //双向对讲
 NETMEDIA_API int	API_CALL	NETMEDIA_TBOpenTalkback(const char* szDevIDNO, int nChn, int nCntMode, LONG_PTR* lpTalkbackHandle);	
 NETMEDIA_API int	API_CALL	NETMEDIA_TBSetRealServer(LONG_PTR lTalkbackHandle, const char* szIP, unsigned short usPort, const char* szSession);	
-//回声消除
-NETMEDIA_API int	API_CALL	NETMEDIA_TBSetEchoCancellation(LONG_PTR lTalkbackHandle, BOOL bEnable);
 NETMEDIA_API int	API_CALL	NETMEDIA_TBSetTalkbackMsgCallBack(LONG_PTR lTalkbackHandle, void* pUsr, void (CALLBACK *FUNRealMsgCB)(int nMsg, void* pUsr));
 NETMEDIA_API int	API_CALL	NETMEDIA_TBSetAudioType(LONG_PTR lTalkbackHandle, int nAudioType);
 NETMEDIA_API int	API_CALL	NETMEDIA_TBSetAudioDelay(LONG_PTR lTalkbackHandle, int nMinSecond);

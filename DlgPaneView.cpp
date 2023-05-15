@@ -1231,7 +1231,7 @@ void CDlgPaneView::PreviewVideo(int nDevID, int nChn, int nIndex)
 	m_pViewWnd[nTemp]->PreviewRealVideo(nDevID, nChn, FALSE);
 }
 
-void CDlgPaneView::OnTimer(UINT nIDEvent) 
+void CDlgPaneView::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	if (nIDEvent == TIMER_IDEVENT_CLOSEVIDEO)

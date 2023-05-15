@@ -23,7 +23,7 @@ public:
 protected:
 	HWND m_hWnd;
 	int m_nMsg;
-	long m_lVehi;
+	LONG_PTR m_lVehi;
 };
 
 #endif // !defined(AFX_SUBVEHI_H__B551F32C_5DBD_417D_882F_CC247C78B622__INCLUDED_)

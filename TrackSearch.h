@@ -31,7 +31,7 @@ private:
 	static void CALLBACK FUNTrackCountCB(GPSTrackCount_S* pTrackCount, void* pUsr);
 
 private:
-	long m_lVehiTrack;
+	LONG_PTR m_lVehiTrack;
 	BOOL m_bSearching;
 	CDlgTrackBack* m_pTrackWnd;
 

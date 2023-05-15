@@ -51,7 +51,7 @@ protected:
 	void	DoPlayMsgCB(int nMsg);
 
 private:
-	long m_lPlayback;
+	LONG_PTR m_lPlayback;
 	HWND m_hWndMsg;
 	HWND m_hWndViedo;
 	UINT m_uiMsg;

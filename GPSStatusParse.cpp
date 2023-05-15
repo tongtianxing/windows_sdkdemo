@@ -546,7 +546,8 @@ void FormatTemperatureInfo(const GPSVehicleGps_S& Gps, CVehicleBase* pVehi, CStr
 		{
 			if (i < 4)
 			{
-				str += pVehi->GetDeviceInfo()->gDVRInfo.szTempSensorName[i];
+				//str += pVehi->GetDeviceInfo()->gDVRInfo.szTempSensorName[i];
+				str += pVehi->GetTempSensorName(i);
 				str += _T(":");
 				sCoachTemp = Gps.sTempSensor[i]/10.0;
 			}

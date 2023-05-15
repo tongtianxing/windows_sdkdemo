@@ -268,7 +268,7 @@ BOOL IsFileEixt(CString strFilePath, DWORD& dwFileLen)
 		CFile file;
 		if (file.Open(strFilePath, CFile::modeRead))
 		{
-			dwFileLen = file.GetLength();
+			dwFileLen = (DWORD)file.GetLength();
 			file.Close();
 		}
 		return TRUE;
@@ -352,7 +352,7 @@ CString FomatSpeedToString(float fSpeed)
 CString FormatDirection2String(const GPSVehicleGps_S& Gps)  
 {
 	CString strDir;
-	if ((Gps.uiStatus[0]>>0)&1 > 0)
+	if (((Gps.uiStatus[0]>>0)&1) > 0)
 	{
 		strDir = FormatGpsDirection(Gps.uiHangXiang) ;
 	}
@@ -423,7 +423,7 @@ void ParseString(const char* szSrc, char cSplit, vecString& vecStr)
 	char* pFind = (char*)strchr(szSrc, cSplit);
 	while(pFind != NULL)
 	{
-		CString str(pTemp, pFind - pTemp);
+		CString str(pTemp, (int)(pFind - pTemp));
 		vecStr.push_back(str);
 		pTemp = pFind + 1;
 		pFind = (char*)strchr(pTemp, cSplit);
@@ -572,7 +572,7 @@ BOOL SearchSection2Int(const char* pBuf, const char* pSection, int& nValue)
 			const char* pPosE = strchr(pPosB, '"');
 			if (pPosE)
 			{
-				nValue = NetString2Int(pPosB, pPosE-pPosB);
+				nValue = NetString2Int(pPosB, (int)(pPosE-pPosB));
 				bRet = TRUE;
 			}
 		}
@@ -594,7 +594,7 @@ BOOL SearchSection2Str(const char* pBuf, const char* pSection, CString& str)
 			pPosB += 1;
 			TRACE("===%s\n",pPosB);
 			const char* pPosE = strchr(pPosB, '"');
-			int nLen = pPosE-pPosB;
+			int nLen = (int)(pPosE-pPosB);
 			if (pPosE && nLen>0)
 			{
 				char* pTmp = new char[nLen+1];

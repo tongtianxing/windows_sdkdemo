@@ -110,7 +110,7 @@ void CDlgPlay::OnBtnOpen()
 // 			{
 // 				fclose(pFile);	pFile = NULL;
 // 			}
-			long lReader = NULL;
+			LONG_PTR lReader = NULL;
 #ifdef _UNICODE
 			USES_CONVERSION;
 			if (S_OK == AVDEC_OpenReader(AVDEC_GetDecHandle(), &lReader, W2A(m_strPlayFile.GetBuffer(0))))
@@ -243,7 +243,7 @@ void CDlgPlay::UpdateRate()
 	SetDlgItemText(IDC_ST_RATE, str);
 }
 
-void CDlgPlay::OnTimer(UINT nIDEvent) 
+void CDlgPlay::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	if (ID_TIMER_PLAY_TIME == nIDEvent)

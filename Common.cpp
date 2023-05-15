@@ -17,13 +17,30 @@ static char THIS_FILE[]=__FILE__;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
+static CString GetLogParam1(GPSUsrLog_S* pUserLog)
+{
+	return CString(pUserLog->szParam1);
+}
+static CString GetLogParam2(GPSUsrLog_S* pUserLog)
+{
+	return CString(pUserLog->szParam2);
+}
+static CString GetLogParam3(GPSUsrLog_S* pUserLog)
+{
+	return CString(pUserLog->szParam3);
+}
+static CString GetLogParam4(GPSUsrLog_S* pUserLog)
+{
+	return CString(pUserLog->szParam4);
+}
+
 void GetClientSubTypeLog(GPSUsrLog_S* pUserLog, CString& strSubType, CString& strInfo)
 {
 	switch(pUserLog->nSubType)
 	{
 	case USRLOG_LOGIN_SUB_TYPE_LOGIN:
 		strSubType = _T("User Logined");
-		strInfo.Format(_T("IP:%s, Session:%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("IP:%s, Session:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_LOGIN_SUB_TYPE_LOGOUT:
 		strSubType = _T("User Logout");
@@ -34,15 +51,15 @@ void GetClientSubTypeLog(GPSUsrLog_S* pUserLog, CString& strSubType, CString& st
 		break;
 	case USRLOG_LOGIN_SUB_TYPE_TRANSFER:
 		strSubType = _T("Transfer");
-		strInfo.Format(_T("Server IDNO:%s, IP:%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("Server IDNO:%s, IP:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_LOGIN_SUB_TYPE_UNKOWN_USR:
 		strSubType = _T("Invaid user or password");
-		strInfo.Format(_T("IP:%s, User:%s, Password:%s"), pUserLog->szParam1, pUserLog->szParam2, pUserLog->szParam3);
+		strInfo.Format(_T("IP:%s, User:%s, Password:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog), GetLogParam3(pUserLog));
 		break;
 	case USRLOG_LOGIN_SUB_TYPE_GET_SVR_FAILED:
 		strSubType = _T("Failed to get an usable server");
-		strInfo.Format(_T("IP:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("IP:%s"), GetLogParam1(pUserLog));
 		break;
 	default:
 		strSubType = _T("Unknow log");
@@ -57,34 +74,34 @@ void GetDevCtrlSubTypeLog(GPSUsrLog_S* pUserLog, CString& strSubType, CString& s
 	{
 	case USRLOG_DEV_CTRL_SUB_TYPE_SEND_TEXT:
 		strSubType = _T("Send TTS Command");
-		strInfo.Format(_T("TTS:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("TTS:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_SEND_SMS:
 		strSubType = _T("Send message to device");
-		strInfo.Format(_T("Phone:%s, Content:%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("Phone:%s, Content:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_SEND_CTRL:
 		strSubType = _T("Send command");
-		strInfo.Format(_T("Cmd:%s, User:%s, Password:%s"), pUserLog->szParam1, pUserLog->szParam2, pUserLog->szParam3);
+		strInfo.Format(_T("Cmd:%s, User:%s, Password:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog), GetLogParam3(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_SEND_PTZ:
 		strSubType = _T("PTZ Control");
-		strInfo.Format(_T("Channel:%s, Cmd:%s, Speed:%s, Param:%s"), pUserLog->szParam1, pUserLog->szParam2, pUserLog->szParam3, pUserLog->szParam4);
+		strInfo.Format(_T("Channel:%s, Cmd:%s, Speed:%s, Param:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog), GetLogParam3(pUserLog), GetLogParam4(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_READ_STATUS:
 		strSubType = _T("Get Status");
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYP_SET_GPSINTERVAL:
 		strSubType = _T("Send GPS interval");
-		strInfo.Format(_T("Time:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Time:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_READ_MOTION:
 		strSubType = _T("Motion Detect");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_SET_MOTION:
 		strSubType = _T("Set motion detection");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_READ_NETFLOW_STATISTICS:
 		strSubType = _T("Get network flow statistics");
@@ -97,7 +114,7 @@ void GetDevCtrlSubTypeLog(GPSUsrLog_S* pUserLog, CString& strSubType, CString& s
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_ADJUST_NETFLOW_STATISTICS:
 		strSubType = _T("Adjust newet flow");
-		strInfo.Format(_T("flow:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("flow:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_DEV_CTRL_SUB_TYPE_SEND_DISPATCH_COMMAND:
 		strSubType = _T("Send dispatch commnad");
@@ -157,50 +174,50 @@ void GetMediaSubTypeLog(GPSUsrLog_S* pUserLog, CString& strSubType, CString& str
 	{
 	case USRLOG_MEDIA_SUB_TYPE_VIDEO:
 		strSubType = _T("Preview");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_AUDIO:
 		strSubType = _T("Listen");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_SNAPSHOT:
 		strSubType = _T("Snapshot");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_REC_SEARCH:
 		strSubType = _T("Search");
-		strInfo.Format(_T("Channel:%s, Time:%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("Channel:%s, Time:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_REC_DOWN:
 		strSubType = _T("Download video");
-		strInfo.Format(_T("File :%s"), pUserLog->szParam1);
+		strInfo.Format(_T("File :%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_DLOWN_DEV_PARAM:
 		strSubType = _T("Get device param");
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_UPLOAD_DEV_PARAM_FILE:
 		strSubType = _T("Upload device param");
-		strInfo.Format(_T("File length :%s"), pUserLog->szParam1);
+		strInfo.Format(_T("File length :%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_UPLOAD_DEVICE_PARAM:
 		strSubType = _T("Device info");
-		strInfo.Format(_T("file :%s, length :%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("file :%s, length :%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_UPLOAD_DEV_UP_FILE:
 		strSubType = _T("Upload firmware");
-		strInfo.Format(_T("Version :%s, Device type:%s, Length:%s"), pUserLog->szParam1, pUserLog->szParam2, pUserLog->szParam3);
+		strInfo.Format(_T("Version :%s, Device type:%s, Length:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog), GetLogParam3(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_UPLOAD_UPGRADE_DEVICE:
 		strSubType = _T("Upgrade remotely");
-		strInfo.Format(_T("Version :%s, File:%s"), pUserLog->szParam1, pUserLog->szParam2);
+		strInfo.Format(_T("Version :%s, File:%s"), GetLogParam1(pUserLog), GetLogParam2(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_PLAYBACK:
 		strSubType = _T("Playback remotly");
-		strInfo.Format(_T("File:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("File:%s"), GetLogParam1(pUserLog));
 		break;
 	case USRLOG_MEDIA_SUB_TYPE_BROADCAST:
 		strSubType = _T("Broadcast");
-		strInfo.Format(_T("Channel:%s"), pUserLog->szParam1);
+		strInfo.Format(_T("Channel:%s"), GetLogParam1(pUserLog));
 		break;
 	default:
 		strSubType = _T("Unknow");

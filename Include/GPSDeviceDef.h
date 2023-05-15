@@ -806,13 +806,6 @@
 #define CUSTOM_ALARM_TYPE_DEV_REPORED_TEXT							99	//设备上报文字信息	
 
 
-#define CUSTOM_ALARM_TYPE_PF_PLATFORM_LOGIN				101		//平台登录  param[0]:平台ID,  param[1] 验证结果	0、成功，1、IP地址不正确,  2、接入码不正确， 3、用户没有注册,  4、密码错误，5、资源紧张，6、其它的
-#define CUSTOM_ALARM_TYPE_PF_PLATFORM_LOGOUT			102		//平台掉线  param[0]:平台ID, 
-#define CUSTOM_ALARM_TYPE_PF_PLATFORM_POST_QUERY_ACK	103		//查岗应答  Param[0]：对象类型 Param[1]：查岗消息ID Param[2]：平台ID  Param[3]：公司ID //szDesc：查岗对象ID  //szImgFile：应答内容
-#define CUSTOM_ALARM_TYPE_PF_PLATFORM_INFO_ACK			104		//报文应答  Param[0]：对象类型 Param[1]：查岗消息ID Param[2]：平台ID  Param[3]：公司ID //szDesc：查岗对象ID  //szImgFile：应答内容
-#define CUSTOM_ALARM_TYPE_PF_VEHICLE_REGISTER			105		//车辆注册  szdec:  车载终端厂商唯一编;车载终端型号;车载终端编号;车载终端 SIM 卡电话号码 
-#define CUSTOM_ALARM_TYPE_PF_VEHICLE_TTS				106		//车辆TTS  szdec: 文本信息
-
 #define CUSTOM_ALARM_TYPE_DRIVER_SWIPE_CAR							279	//司机刷卡	Param[0]: 1表示登录，0表示退签		desc:卡号
 
 //银星:自定义报警

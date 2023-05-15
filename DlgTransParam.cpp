@@ -100,7 +100,7 @@ BOOL CDlgTransParam::OnInitDialog()
 		if (pVehi != NULL)
 		{
 			m_cmbDev.InsertString(nIndex, pVehi->GetShowName());
-			m_cmbDev.SetItemData(nIndex, DWORD(pVehi));
+			m_cmbDev.SetItemData(nIndex, DWORD_PTR(pVehi));
 			nIndex ++;
 		}
 		iterB++;

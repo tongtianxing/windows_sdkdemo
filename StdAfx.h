@@ -21,6 +21,7 @@
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
 #pragma warning(disable : 4786)
+#pragma warning(disable : 4996)
 #include <map>
 #include <list>
 #include <vector>
@@ -42,7 +43,7 @@
 #include "PublicApi.h"
 #include "StringSTL.h"
 #include "StaticObject.h"
-#include "WndPublic.h"
+//#include "WndPublic.h"
 
 #include "netclientapi.h"
 #pragma comment(lib, "libnetclient.lib")
@@ -61,19 +62,19 @@
 // #pragma comment(lib, "libcommon.lib")
 // #endif
 
-//#include <libcommon.h>
-//#include <libwndcommon.h>
+#include <libcommon.h>
+#include <libwndcommon.h>
 #include "libcontrol.h"
 
-#ifdef _DEBUG
-#pragma comment(lib, "libwndcommon10D.lib")
-#pragma comment(lib, "libcommon10d.lib")
-#pragma comment(lib, "libcontrold.lib")
-#else
-#pragma comment(lib, "libwndcommon10.lib")
-#pragma comment(lib, "libcommon10.lib")
-#pragma comment(lib, "libcontrol.lib")
-#endif
+// #ifdef _DEBUG
+// #pragma comment(lib, "libwndcommon10D.lib")
+// #pragma comment(lib, "libcommon10d.lib")
+// #pragma comment(lib, "libcontrold.lib")
+// #else
+// #pragma comment(lib, "libwndcommon10.lib")
+// #pragma comment(lib, "libcommon10.lib")
+// #pragma comment(lib, "libcontrol.lib")
+// #endif
 
 #include "resource.h"
 #include "commondef.h"
@@ -90,9 +91,6 @@
 #include "SvrVer.h"
 #include "CharSetConvert.h"
 #include "VehicleBaseMgr.h"
-//#include <afxcontrolbars.h>
-//#define CWinAppEx CWinApp£º
-//#include <afxcontrolbars.h>
 
 
 typedef struct tagDeviceStatusChange

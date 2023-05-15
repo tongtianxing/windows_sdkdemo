@@ -36,7 +36,6 @@ typedef struct _tagGPSMCMsg
 
 typedef void (__stdcall * FUNDownDataCB)(int nType, void* pData, void * pUsr);
 typedef void (CALLBACK * FUNDownConfigCB)(int nType, const char* pDataBuf, int nDataLen, void * pUsr);
-typedef void (CALLBACK *FUNCMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr);
 
 #pragma pack()
 
@@ -49,7 +48,6 @@ NETCLIENT_API void	API_CALL	NETCLIENT_SetRecntCount(int nCount);
 
 //=============================通用接口====================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_SetDataCB(LONG_PTR lHandle, void* pUsr, FUNDownDataCB pfnDownData);
-NETCLIENT_API int	API_CALL	NETCLIENT_SetDataConfigCB(LONG_PTR lHandle, void* pUsr, FUNDownConfigCB pfnDownData);
 NETCLIENT_API int	API_CALL	NETCLIENT_Start(LONG_PTR lHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_Stop(LONG_PTR lHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_Close(LONG_PTR lHandle);
@@ -57,6 +55,7 @@ NETCLIENT_API int	API_CALL	NETCLIENT_Close(LONG_PTR lHandle);
 //=============================客户端登录====================================//
 NETCLIENT_API int  API_CALL		NETCLIENT_RegLoginMsg(void* pUsr, void (CALLBACK * FUNLoginMsgCB)(int nMsg, void * pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_LoginDirSvr(const char* pSvrIP, unsigned short usPort, const char* szCompany, const char* szUsr, const char* szPwd, int nType);
+NETCLIENT_API int	API_CALL	NETCLIENT_LoginDirSvrMD5(const char* pSvrIP, unsigned short usPort, const char* szCompany, const char* szUsr, const char* szMD5Pwd, int nType);
 NETCLIENT_API int	API_CALL	NETCLIENT_LogoutDirSvr();
 NETCLIENT_API int	API_CALL	NETCLIENT_GetDirSvr(char* pSvrIP, unsigned int nIPLen, unsigned short* pPort, char* pSession, unsigned int nSessionLen);
 NETCLIENT_API int	API_CALL	NETCLIENT_SetUserSvrInfo(const char* pSvrIP, unsigned short usPort);
@@ -80,8 +79,7 @@ NETCLIENT_API int	API_CALL	NETCLIENT_DEVDeviceChangeCB(void* pUsr, void (CALLBAC
 
 //=============================设备信息下载，使用线程方式====================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_DEVOpenDevDownEx(LONG_PTR* lpHandle);
-NETCLIENT_API int	API_CALL	NETCLIENT_DEVSetCharEx(LONG_PTR lHandle, BOOL bUtf8 = TRUE);
-NETCLIENT_API int	API_CALL	NETCLIENT_DEVSetStringMode(LONG_PTR lHandle, BOOL bStrMode = TRUE);
+NETCLIENT_API int	API_CALL	NETCLIENT_DEVSetCharEx(LONG_PTR lHandle, BOOL bUtf8=TRUE);
 NETCLIENT_API int	API_CALL	NETCLIENT_DEVRegDevDownCBEx(LONG_PTR lHandle, void* pUsr, void (CALLBACK * FUNDownDevCBEx)(int nType, void* pData, void * pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_DEVRegDevDownDataCBEx(LONG_PTR lHandle, void* pUsr, void (CALLBACK * FUNDevDownDataCBEx)(int nType, const char* pDataBuf, int nDataLen, void * pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_DEVStartDevDownEx(LONG_PTR lHandle, int nMgrType, int nDevType);
@@ -158,7 +156,6 @@ NETCLIENT_API int	API_CALL	NETCLIENT_USRCloseDevFence(LONG_PTR lHandle);
 //=============================获取车辆驾驶状态====================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_USROpenVehiDirveStatus(LONG_PTR* lpHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_USRSetVehiDirveStatus(LONG_PTR lHandle, void* pUsr, void (CALLBACK* FUNDriverSta)(int nType, void* pData, void* pUsr));
-NETCLIENT_API int	API_CALL	NETCLIENT_USRSetVehiDirveStatusStr(LONG_PTR lHandle, BOOL bIsStr);
 NETCLIENT_API int	API_CALL	NETCLIENT_USRStartVehiDirveStatus(LONG_PTR lHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_USRStopVehiDirveStatus(LONG_PTR lHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_USRCloseVehiDirveStatus(LONG_PTR lHandle);
@@ -222,7 +219,6 @@ NETCLIENT_API int	API_CALL	NETCLIENT_VTSetVTrackMsgCB(LONG_PTR lVTrackHandle, vo
 NETCLIENT_API int	API_CALL	NETCLIENT_VTSetVTrackDataCB(LONG_PTR lVTrackHandle, void* pUsr, void (CALLBACK *FUNVehiTrackDataCB)(GPSVehicleTrack_S* pVehiTrack, void* pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_VTSetVTrackCountCB(LONG_PTR lVTrackHandle, void* pUsr, void (CALLBACK *FUNTrackCountCB)(GPSTrackCount_S* pTrackCount, void* pUsr));
 NETCLIENT_API int   API_CALL	NETCLIENT_VTSetVTrackDevCountCB(LONG_PTR lVTrackHandle, void* pUsr, void (CALLBACK *FUNTrackDevCountCB)(GPSTrackDevCount_S* pTrackDevCount, void* pUsr));
-NETCLIENT_API int	API_CALL	NETCLIENT_VTSetVehiID(LONG_PTR lVTrackHandle, int nVehiID);
 NETCLIENT_API int	API_CALL	NETCLIENT_VTStartVehiTrack(LONG_PTR lVTrackHandle, char* szDevIDNO, const SYSTEMTIME* pBegTime, const SYSTEMTIME* pEndTime, int nType, int nDistance, int nParkTime);
 NETCLIENT_API int	API_CALL	NETCLIENT_VTStopVehiTrack(LONG_PTR lVTrackHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_VTCloseVehiTrack(LONG_PTR lVTrackHandle);
@@ -248,12 +244,10 @@ NETCLIENT_API int	API_CALL	NETCLIENT_TPCloseTransPort(LONG_PTR lTransPortHandle)
 NETCLIENT_API int	API_CALL	NETCLIENT_OpenAlarmQuery(LONG_PTR* lpAlarmQueryHandle, int nStartIndex, int nCount);
 NETCLIENT_API int	API_CALL	NETCLIENT_SetAlarmQueryMsgCB(LONG_PTR lAlarmQueryHandle, void* pUsr, void (CALLBACK *FUNMsgCB)(int nMsg, int nParam, void* pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_SetAlarmQueryDataCB(LONG_PTR lAlarmQueryHandle, void* pUsr, void (CALLBACK *FUNVehiArmCB)(const GPSVehicleAlarm_S* pAlarm, void* pUsr));
-NETCLIENT_API int	API_CALL	NETCLIENT_SetAlarmQueryDataExCB(LONG_PTR lAlarmQueryHandle, void* pUsr, void (CALLBACK *FUNVehiArmCB)(const char* pData, int nDataLen, void* pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_SetAlarmQueryCountCB(LONG_PTR lAlarmQueryHandle, void* pUsr, void (CALLBACK *FUNVehiArmCountCB)(const GPSAlarmCount_S* pAlarmCount, void* pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_StartAlarmQuery(LONG_PTR lAlarmQueryHandle, GPSDeviceIDNO_S* pDevice, int nDevCount, int* pArmType, int nTyCount, SYSTEMTIME* tmBeg, SYSTEMTIME* tmEnd);
 NETCLIENT_API int	API_CALL	NETCLIENT_StartAlarmQueryEx(LONG_PTR lAlarmQueryHandle, GPSDeviceIDNO_S* pDevice, int nDevCount, AlarmQueryParam_S* pArmParam, int nTyCount, SYSTEMTIME* tmBeg, SYSTEMTIME* tmEnd);
 NETCLIENT_API int	API_CALL	NETCLIENT_StartAlarmQueryMore(LONG_PTR lAlarmQueryHandle, GPSDeviceIDNO_S* pDevice, int nDevCount, AlarmQueryParamMore_S* pArmParam, int nTyCount, SYSTEMTIME* tmBeg, SYSTEMTIME* tmEnd);
-NETCLIENT_API int	API_CALL	NETCLIENT_StartAlarmQueryStr(LONG_PTR lAlarmQueryHandle, GPSDeviceIDNO_S* pDevice, int nDevCount, AlarmQueryParamMore_S* pArmParam, int nTyCount, SYSTEMTIME* tmBeg, SYSTEMTIME* tmEnd);
 NETCLIENT_API int	API_CALL	NETCLIENT_StopAlarmQuery(LONG_PTR lAlarmQueryHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_CloseAlarmQuery(LONG_PTR lAlarmQueryHandle);
 
@@ -296,7 +290,6 @@ NETCLIENT_API int	API_CALL	NETCLIENT_ULOpenFile2SvrMD5(LONG_PTR* lHandle, const 
 NETCLIENT_API int	API_CALL	NETCLIENT_ULOpenFile2SvrMD5W(LONG_PTR* lHandle, const wchar_t* wszSrcFile, int nFileType);
 NETCLIENT_API int	API_CALL	NETCLIENT_ULOpenFile2SvrMD5Ex(LONG_PTR* lHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_ULOpenFile2FtpSvrMD5(LONG_PTR* lHandle);
-NETCLIENT_API int	API_CALL	NETCLIENT_ULSetDevIDNO(LONG_PTR lUploadHandle, const char* szDevIDNO);
 NETCLIENT_API int	API_CALL	NETCLIENT_ULSetFileInfoMD5Ex(LONG_PTR lUploadHandle, const char* szSrcFile, const GPSFile2SvrMD5Ex_S* pFileInfo);
 NETCLIENT_API int	API_CALL	NETCLIENT_ULSetFileInfoMD5ExW(LONG_PTR lUploadHandle, const wchar_t* wszSrcFile, const GPSFile2SvrMD5Ex_S* pFileInfo);
 NETCLIENT_API int	API_CALL	NETCLIENT_ULSetUploadMsgCB(LONG_PTR lUploadHandle, void* pUsr, void (CALLBACK *FUNMsgCB)(int nMsg, int nParam, void* pUsr));
@@ -309,7 +302,6 @@ NETCLIENT_API int	API_CALL	NETCLIENT_ULCloseUpload(LONG_PTR lUploadHandle);
 
 //=============================远程升级====================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_DUOpenDevUpgrade(LONG_PTR* lHandle, const char* szDevIDNO, GPSDEVUpgradeFile_S* pFile, int nSvrID, const char* szUpFile);
-NETCLIENT_API int	API_CALL	NETCLIENT_DUChangeUpgradeFile(LONG_PTR lUploadHandle, GPSDEVUpgradeFileEx_S* pFile);
 NETCLIENT_API int	API_CALL	NETCLIENT_DUSetDevUpMsgCB(LONG_PTR lUploadHandle, void* pUsr, void (CALLBACK *FUNMsgCB)(int nMsg, int nParam, void* pUsr));
 NETCLIENT_API int	API_CALL	NETCLIENT_DUStartDevUpgrade(LONG_PTR lUploadHandle);
 NETCLIENT_API int	API_CALL	NETCLIENT_DUStopDevUgprade(LONG_PTR lUploadHandle);
@@ -404,9 +396,6 @@ NETCLIENT_API int	API_CALL	NETCLIENT_MCAdjustNetFlowStatistics(const char* szDev
 NETCLIENT_API int	API_CALL	NETCLIENT_MCSetUsrAlarmShield(const GPSAlarmShield_S* pAlarm, int nCount
 														 , void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr)
 														 , LONG_PTR* lpHandle);
-//设置用户AI报警屏蔽 
-NETCLIENT_API int	API_CALL	NETCLIENT_MCSetUsrAiAlarmShield(int nAiType, const GPSAlarmShield_S* pAlarm, int nCount
-	, void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr), LONG_PTR* lpHandle);
 //添加地图标记信息
 NETCLIENT_API int	API_CALL	NETCLIENT_MCAddMapMarker(const GPSMapMarker_S* pMarker
 														  , void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr)
@@ -491,17 +480,8 @@ NETCLIENT_API int	API_CALL	NETCLIENT_MCCreateClientAlarm(const GPSVehicleAlarm_S
 														, void* pUsr,void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr)
 														, LONG_PTR* lpHandle);
 
-//给媒体文件增加备注
-NETCLIENT_API int	API_CALL	NETCLIENT_MCSetMediaFileRemarks(GPSFile_S* pFile, const char* szRemarksUtf8
-														, void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr)
-														, LONG_PTR* lpHandle);
-
 //修改车辆的使用状态(单次处理数量最大100个)
 NETCLIENT_API int	API_CALL	NETCLIENT_MCChangeUseStatus(int* pVehiID, int nCount, int nUseStatus
-	, void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr), LONG_PTR* lpHandle);
-
-//发送苏标上传命令
-NETCLIENT_API int	API_CALL	NETCLIENT_MCSendSbUpload(const char* szDevIDNO, const char* szGuid, const char* szAlarmCode
 	, void* pUsr, void (CALLBACK * FUNMCMsgCB)(GPSMCMsg_S* pMsg, void* pUsr), LONG_PTR* lpHandle);
 
 
@@ -511,15 +491,10 @@ NETCLIENT_API int	API_CALL	NETCLIENT_MCGetLastestSnapshot(const char* szDevIDNO,
 //=============================与服务器进行指令交互（使用TCP方式直接服务器）====================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_CMDAddMapLine(const GPSMapLine_S* pLine, void* pUsr, FUNDownDataCB pfnDownData
 														 , LONG_PTR* lpHandle);
-//设置设备油量刻度表(兼容旧版本)
-NETCLIENT_API int	API_CALL	NETCLIENT_MCSetDevOliResistanceOld(const OilResistanceOld_S* pOilResistance, int nCount
-																, void* pUsr, FUNDownDataCB pfnDownData
-																, LONG_PTR* lpHandle);
 //设置设备油量刻度表 
 NETCLIENT_API int	API_CALL	NETCLIENT_MCSetDevOliResistance(const OilResistance_S* pOilResistance, int nCount
 																, void* pUsr, FUNDownDataCB pfnDownData
 																, LONG_PTR* lpHandle);
-
 //设置设备抓拍计划 
 NETCLIENT_API int	API_CALL	NETCLIENT_MCSetDevSnapshotPlan(const GPSDevSnapshotPlan_S* pDevSnapshotPlan, int nCount
 																, void* pUsr, FUNDownDataCB pfnDownData
@@ -546,6 +521,7 @@ NETCLIENT_API int	API_CALL	NETCLIENT_MCAddDevDloadTask(const GPSDevDloadTask_S* 
 //批量删除设备下载计划
 NETCLIENT_API int	API_CALL	NETCLIENT_MCDelDevDloadTask(const int* pID, int nCount
 															   , void* pUsr, FUNDownDataCB pfnDownData, LONG_PTR* lpHandle);
+
 //批量下载指定类型的数据
 #define GPS_DOWN_DATA_FLAG_VEHICLE_OTHER		0x1	//返回类型:GPS_BETCH_DOWN_DEVICE_VEHICLE_OTHER 结构体:GPSVehiOtherVariable_S
 NETCLIENT_API int	API_CALL	NETCLIENT_MCDownBatchData(unsigned int uFlag, void* pUsr, FUNDownConfigCB pfnDownData, LONG_PTR* lpHandle);
@@ -607,14 +583,7 @@ NETCLIENT_API int	API_CALL	NETCLIENT_CUOpenOnlineStatusQuery(LONG_PTR* lpHandle,
 //=============================查询809连接状态(使用通用接口操作)=================================//
 NETCLIENT_API int	API_CALL	NETCLIENT_CS809OpenQuery(LONG_PTR* lpHandle);
 
-//获取司机的证件照(1张)
-NETCLIENT_API int	API_CALL	NETCLIENT_GetDriverFace(LONG_PTR* lpHandle, int nDriverID, const char* szFileMD5 = NULL);
 
-//获取自定义报警名称
-NETCLIENT_API int	API_CALL	NETCLIENT_OpenGetAlarmCustomName(LONG_PTR* lpHandle, const char* szLanguage);
-
-//获取车辆风险信息
-NETCLIENT_API int	API_CALL	NETCLIENT_OpenGetVehicleRiskScore(LONG_PTR* lpHandle, int* pVehiID, int nVehiCount);
 
 
 #ifdef __cplusplus

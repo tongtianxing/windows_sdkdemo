@@ -28,7 +28,7 @@
 
 #include "ttxtypedef.h"
 
-#define TTX_NET_VERSION 		"V6.1.53 20191205"
+#define TTX_NET_VERSION 		"V6.1.47 20170905"
 
 
 #define TTX_MAX_CHANNEL			16		//最多通道数目
@@ -234,8 +234,7 @@
 #define TTX_VIDEO_CODEC_H264					0
 #define TTX_VIDEO_CODEC_H264_HI					1	//视频解码器，海思芯片使用些类型	
 #define TTX_VIDEO_CODEC_H264_PRI_1				2	//私有带加密信息，请不要使用些参数
-#define TTX_VIDEO_CODEC_H265_HI					3	//
-#define TTX_VIDEO_CODEC_H265					4	//
+#define TTX_VIDEO_CODEC_H265					3	//
 
 
 //网络类型定义
@@ -243,7 +242,6 @@
 #define TTX_NETWORK_TYPE_WIFI			1	//WIFI网络登录
 #define TTX_NETWORK_TYPE_NET			2	//有线网络登录
 #define TTX_NETWORK_TYPE_4G				3	//4G网络
-#define TTX_NETWORK_TYPE_5G				4	//5G网络
 
 //磁盘类型(用于区分卡机和硬盘机)
 #define TTX_DISK_TYPE_SD				1	//SD卡
@@ -276,6 +274,7 @@
 #define TTX_CTRL_TYPE_RECORD_SOUND		20		//开始录音    //高两字节为录音的通道号，低两字节为指令
 #define TTX_CTRL_TYPE_STOP_REC_SOUND	21		//停止录音    //高两字节为录音的通道号，低两字节为指令
 #define TTX_CTRL_TYPE_WIFI_DOWN_FINISH	22		//wifi下载结束
+#define TTX_CTRL_TYPE_RESET_PEOPLE		23	//复位人数统计
 
 //上传的文件类型定义
 #define TTX_UPLOAD_FILE_TYPE_PICTURE	1	//图片文件(可以是jpg, bmp, png等格式)
@@ -283,10 +282,6 @@
 
 #define TTX_MOTION_MASK 			9	//移动侦测
 #define TTX_UPLOAD_STATES_INFO		0x11223344 //信息帧是否带gps,车辆状态等信息
-//编码类型类型
-#define TTX_TYPE_CODE_ANSI			0		//ANSI
-#define TTX_TYPE_CODE_UTF8			1		//UTF8
-
 #pragma pack(4)
 
 typedef struct tagTTXGpsInfo
@@ -350,9 +345,7 @@ typedef struct tagTTXModuleStatus
 	char cLocType; 		//GPS定位类型TTX_LOC_TYPE_GPS，TTX_LOC_TYPE_WIFI
 	char cSatellites;		//卫星数
 	char cSosButton;	//紧急报警的状态，1为true，0为false
-	char cLowVoltage;	//低压报警状态，1为true, 0为false
-	char cVoltage;		//电量, 0-100
-	char cReserve[4];	//保留参数
+	char cReserve[6];	//保留参数
 }TTXModuleStatus_S, *LPTTXModuleStatus_S;
 
 typedef struct tagTTXIOStatus
@@ -391,17 +384,6 @@ typedef struct tagTTXPeopleStatus
 	char cReserve[8];	//保留参数
 }TTXPeopleStatus_S, *LPTTXPeopleStatus_S;
 
-//渣土车的状态
-typedef struct tagTTXSlagStatus
-{
-	unsigned int uiWeight;		//重量，可以为刻度、百分比，由后台进行换算。如果为真实的重量，则单位为千克
-	unsigned char ucLift;		//举升
-	unsigned char ucClose;		//闭合
-	unsigned char ucLoadPersent;		//装载百分比，暂时无效
-	unsigned char ucValid;		//渣土车是否为效，如果要上报状态必须填为1
-	char cReserve[8];	//保留参数	
-}TTXSlagStatus_S, *LPTTXSlagStatus_S;
-
 typedef struct tagTTXTemperature
 {
 	float fTemperatue[4];		//温度，99.99 = 99.99度
@@ -419,10 +401,7 @@ typedef struct _tagTTXRecFile
 	unsigned char Channel;	//通道号，从0开始
 	unsigned int  uiFileTime;	//文件时长，秒为单位
 	unsigned int  uiFileLen;	//文件长度
-	char	szFileName[240];
-	unsigned short usMulChn;	//可以多路回放的通道	，按位表示
-	char 	bMulPlay;			//是否支持多路同时回放
-	char	cReserve;			//保留参数
+	char	szFileName[244];
 	char	cYJWNewFlag;		//新文件使用，请填0
 	char	cCoointNewFlag;		//新文件使用，请填0
 	char	bRecording;			//是否正在录像，0表示没有，1表示正在录像
@@ -578,7 +557,8 @@ typedef struct _tagTTXMotionParam
 typedef	struct _tagTTXStateInfoIndexHead
 {
 	unsigned int		unStateInfoflag; 			//状态发送标志位TTX_UPLOAD_STATES_INFO
-	unsigned short usDataType;		//数据类型	第0位为1表示车辆状态信息TTXVehiStatus_S,
+	unsigned short usDataType;		//数据类型	第0位为1表示车辆状态信息TTXVehiStatus_S,
+
 									//第1位为1GPS信息TTXGpsInfo_S,第2位为1IO状态TTXIOStatus_S,第3位为1gsensor状态TTXGsensorInfo_S	
 	unsigned short usDataLen;		//数据长度
 }TTXStateInfoIndexHead_S;
@@ -654,8 +634,8 @@ public:
 		memset(&m_IOStatus, 0, sizeof(m_IOStatus));
 		memset(&m_ObdStatus, 0, sizeof(m_ObdStatus));
 		memset(&m_PeopleStatus, 0, sizeof(m_PeopleStatus));
-		memset(&m_SlagStatus, 0, sizeof(m_SlagStatus));
 		memset(&m_ChannelStaus, 0, sizeof(m_ChannelStaus));
+		
 		memset(&m_Gsensorinfo, 0, sizeof(m_Gsensorinfo)); //Gsensor
 		
 		m_nGpsInterval = 10;		//默认GPS发送间隔为10秒钟
@@ -693,7 +673,6 @@ public:
 	void	SetIOStatus(const TTXIOStatus_S& io) {	m_IOStatus = io;}
 	void	SetObdStatus(const TTXObdStatus_S& obd) {	m_ObdStatus = obd;}
 	void	SetPeopleStatus(const TTXPeopleStatus_S& people) {	m_PeopleStatus = people;}
-	void	SetSlagStatus(const TTXSlagStatus_S& slag) {	m_SlagStatus = slag;}
 	//更新通道状态信息
 	void	SetChannelStatus(const TTXChannelStatus_S& channel) {	m_ChannelStaus = channel;}
 
@@ -724,8 +703,6 @@ public:
 	virtual	TTXObdStatus_S GetObdStatus() {	return m_ObdStatus;}
 	//获取人数统计状态
 	virtual	TTXPeopleStatus_S GetPeopleStatus() {	return m_PeopleStatus;}
-	//获取渣土车状态
-	virtual	TTXSlagStatus_S GetSlagStatus() {	return m_SlagStatus;}
 	//更新通道状态信息
 	virtual TTXChannelStatus_S GetChannelStatus() {	return m_ChannelStaus;}
 	//获取软件版本信息
@@ -830,14 +807,6 @@ public:
 	//@pInConfig: PC传入的参数信息
 	//@pOutConfig: 设备返回的参数信息
 	virtual bool DoTransparentConfig(int nType, const LPTTXConfigData_S pInConfig, LPTTXConfigData_S pOutConfig) {	return false;	}
-	//文件开始上传
-	//@szFile: 文件名绝对路径
-	//@isServer: 如果为true表示服务器执行下载，如果为false表示客户端进行下载
-	virtual void DoFileUploadBegin(const char* szFile, bool isServer) {	}
-	//文件上传完成
-	//@szFile: 文件名绝对路径
-	//@isServer: 如果为true表示服务器执行下载，如果为false表示客户端进行下载
-	virtual void DoFileUploadFinishEx(const char* szFile, bool isServer) {	}
 	//文件上传完成
 	//@szFile: 文件名绝对路径
 	virtual void DoFileUploadFinish(const char* szFile) {	}
@@ -1232,7 +1201,6 @@ protected:
 	TTXChannelStatus_S 	m_ChannelStaus;	//通道状态
 	TTXModuleStatus_S	m_ModuleStatus;	//模块状态
 	TTXTemperature_S	m_Temperature;	//温度状态
-	TTXSlagStatus_S		m_SlagStatus;	//渣土车状态
 	int				m_nGpsInterval;		//GPS发送间隔，单位秒
 	int				m_nHeartInterval;	//心跳发送间隔, 单位秒
 	int				m_nTtsFlag;		//tts标志

@@ -157,8 +157,8 @@ void CDlgAueWifiSetup::FillSetReq( char* pBuf, int& nSize )
 	int nChannel = 0;
 	GetDlgItemText(IDC_ED_SSID, strSSID);
 	GetDlgItemText(IDC_ED_PASSWORD, strPassword);
-	nMode = m_cmbMode.GetItemData(m_cmbMode.GetCurSel());
-	nChannel = m_cmbChannel.GetItemData(m_cmbChannel.GetCurSel());
+	nMode = (int)m_cmbMode.GetItemData(m_cmbMode.GetCurSel());
+	nChannel = (int)m_cmbChannel.GetItemData(m_cmbChannel.GetCurSel());
 
 	CString str;
 	str.Format(_T("<Parameter><WIFI Action=\"set\" mode=\"%d\" SSID=\"%s\" password=\"%s\" channel=\"%d\"></WIFI></Parameter>"),

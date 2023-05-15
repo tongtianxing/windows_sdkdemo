@@ -578,7 +578,7 @@ void CPVFrameWnd::FUNRealDataCB(const char* pFrameBuf , int nFrameLen, int nFram
 	CPVFrameWnd* pThis = (CPVFrameWnd*)pUsr;
 	DEBUGTraceOutput(_T("FUNRealDataCB %I64d, %08X,%d"), llFrameStamp, nFrameType, nFrameLen);
 
-	long lRecHandle = pThis->m_lRecHandle;
+	LONG_PTR lRecHandle = pThis->m_lRecHandle;
 	if (lRecHandle)
 	{
 		if (nFrameType == 1)

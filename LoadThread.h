@@ -62,7 +62,7 @@ private:
 	mapDevGroup		m_mapDevGroup;
 	mapStrDevice	m_mapIdnoDevice;
 	
-	long	m_lDownHandle;
+	LONG_PTR	m_lDownHandle;
 	
 	mapVehicleBase		m_mapVehi;
 };

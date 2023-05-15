@@ -51,7 +51,7 @@ private:
 	
 	void EnableCtrl(BOOL bEnable);
 private:
-	long m_lHandle;
+	LONG_PTR m_lHandle;
 };
 
 //{{AFX_INSERT_LOCATION}}

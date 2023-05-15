@@ -126,10 +126,10 @@ BOOL CDownSnapshot::DecodeI2JPG( FILE* pFile, CString& strJPGFile )
 	{
 		fseek(pFile, 0, SEEK_SET);
 		int nFrameType = 0;
-		int nRead = fread(&nFrameType, 1, sizeof(int), pFile);
+		int nRead = (int)fread(&nFrameType, 1, sizeof(int), pFile);
 		if(nFrameType == 16777216)
 		{
-			long lHandle = 0;
+			LONG_PTR lHandle = 0;
 			AVDEC_OpenPlayHandle(NETMEDIA_GetDecHandle(), &lHandle);
 			fseek(pFile, 0, SEEK_END);
 			int nLen = ftell(pFile);
@@ -158,7 +158,7 @@ BOOL CDownSnapshot::DecodeI2JPG( FILE* pFile, CString& strJPGFile )
 						strJPGFile = szFilenameJPGE;
 						bRet = TRUE;
 					}
-					SAFE_DELETE_OBJECT(pImg);
+					CImgBase::SDeleteImage(pImg);
 				}
 			}
 			SAFE_DELETE_ARRAY(pFrameBuf);

@@ -279,7 +279,7 @@ void CDlgRecPlaybackControl::UpdateDownSpeed()
 //		TRACE("FlowRate = %d\n", nFlowRate);
 	}
 }
-void CDlgRecPlaybackControl::OnTimer(UINT nIDEvent) 
+void CDlgRecPlaybackControl::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	if (EVENT_GET_FLOW_RATE == nIDEvent)

@@ -69,8 +69,6 @@ extern "C" {
 #define AVDEC_PLAY_A_TYPE_G711A_EX				17		//非海思格式
 #define AVDEC_PLAY_A_TYPE_G711U_EX				18		//非海思格式
 #define AVDEC_PLAY_A_TYPE_NELLY_8KBPS			19		//Nellymoser
-#define AVDEC_PLAY_A_TYPE_TYPE_PCM_8K			20		//8K的PCM音频格式
-#define AVDEC_PLAY_A_TYPE_TYPE_PCM_16K			21		//16K的PCM音频格式
 
 // 文件类型宏定义
 #define AVDEC_FILE_FORMAT_SEARCH_ALL			-2	//.*文件,用来搜索本地文件
@@ -114,8 +112,6 @@ AVDECODER_API HANDLE	API_CALL	AVDEC_GetDecHandle();
 AVDECODER_API void	API_CALL	AVDEC_UnInitialize(HANDLE hDec);
 AVDECODER_API void	API_CALL	AVDEC_SetWaterEable(HANDLE hDec, BOOL bEnable);
 AVDECODER_API void	API_CALL	AVDEC_SetAudioGain(HANDLE hDec, double lfGain);
-// 设置是否启用回声消除功能
-AVDECODER_API void	API_CALL	AVDEC_SetAecParam(HANDLE hDec, BOOL bEnable, int nDelay);
 
 /*-----------------------取得文件头的长度------------------------------*/
 AVDECODER_API int	API_CALL	AVDEC_GetFileHeadLength(HANDLE hDec, LONG_PTR* lpLength);
@@ -240,8 +236,6 @@ AVDECODER_API int	API_CALL	AVDEC_OpenAudioCapture(HANDLE hDec, LONG_PTR* lpAudio
 	, void (CALLBACK* FUNAudioDataCB)(char* pAudioData, int nDataLen, void* pUsr));
 AVDECODER_API int	API_CALL	AVDEC_OpenAudioCaptureEx(HANDLE hDec, LONG_PTR* lpAudioHandle, int nSampleRate, void* pUsr
 	, void (CALLBACK* FUNAudioDataCB)(char* pAudioData, int nDataLen, void* pUsr));
-AVDECODER_API int	API_CALL	AVDEC_OpenAudioCapturePCM(HANDLE hDec, LONG_PTR* lpAudioHandle, void* pWaveFormat, int nSize, void* pUsr
-	, void (CALLBACK* FUNAudioDataCB)(char* pAudioData, int nDataLen, void* pUsr));
 AVDECODER_API int	API_CALL	AVDEC_CloseAudioCapture(LONG_PTR lAudioHandle);
 
 // 音频捕获并编码
@@ -340,10 +334,6 @@ AVDECODER_API int	API_CALL	AVDEC_AFPGetPlayTime(LONG_PTR lAudioFilePlayer, int& 
 AVDECODER_API int	API_CALL	AVDEC_AFPPause(LONG_PTR lAudioFilePlayer, BOOL bPause);
 AVDECODER_API int	API_CALL	AVDEC_AFPStopPlay(LONG_PTR lAudioFilePlayer);
 AVDECODER_API int	API_CALL	AVDEC_AFPClose(LONG_PTR lAudioFilePlayer);
-
-
-AVDECODER_API int	API_CALL	AVDEC_OpenEchoCancellation(HANDLE hDec, LONG_PTR* lpHandle, LONG_PTR lAudioPlayer, LONG_PTR lAudioCapture);
-AVDECODER_API int	API_CALL	AVDEC_CloseEchoCancellation(LONG_PTR lHandle);
 
 #ifdef __cplusplus
 }

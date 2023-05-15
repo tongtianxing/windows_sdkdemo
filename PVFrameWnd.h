@@ -186,12 +186,12 @@ private:
 	int		m_nDivActIndex;
 	int		m_nViewSize;
 
-	long m_lHandle;
+	LONG_PTR m_lHandle;
 	int m_nDevID;
 	int m_nChannel;
 	int m_bMain;
 
-	long m_lRecHandle;
+	LONG_PTR m_lRecHandle;
 	long m_BegPos;
 	long m_EndPos;
 };

@@ -76,7 +76,7 @@ protected:
 	afx_msg void OnDestroy();
 	afx_msg void OnButSave();
 	afx_msg void OnButSaveMut();
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	//}}AFX_MSG
 	afx_msg LRESULT OnGetParameterMsg(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnUpLoadMsg(WPARAM wParam, LPARAM lParam);
@@ -157,10 +157,10 @@ private:
 
 	GPSDEVUpgradeFile_S m_FileInfo;
 
-	long	m_lParamerConfHandle;//设备获取参数
-	long    m_lUploadHandle; 
+	LONG_PTR	m_lParamerConfHandle;//设备获取参数
+	LONG_PTR    m_lUploadHandle; 
 //    long    m_lpSetDevCfg;
-	long    m_lPromoteHanle;
+	LONG_PTR    m_lPromoteHanle;
 	CDlgLoading* m_pDlgLoading;
 	TCHAR	m_szExportCfgFile[MAX_PATH];
 
@@ -173,8 +173,8 @@ private:
     int     m_nFirstCount; 
 	BOOL    m_bFlagIsImPort;
 
-	long	m_lGetParamHandle;
-	long	m_lSetParamHandle;
+	LONG_PTR	m_lGetParamHandle;
+	LONG_PTR	m_lSetParamHandle;
 	//	CDlgLoading	m_dlgLoading;
 	GPSConfigDataEx_S	m_ConfigData;
 	BOOL	m_bGetParamSuc;

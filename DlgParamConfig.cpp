@@ -193,7 +193,7 @@ void CDlgParamConfig::DoDataCB( const char* pBuf, int nLen, long nPos )
 			{
 				std::vector<char> VecBuf;
 				VecBuf.resize(nWriteLen);
-				int nFileWriteLen = fwrite(&VecBuf[0], 1, nWriteLen, m_pFile);
+				int nFileWriteLen = (int)fwrite(&VecBuf[0], 1, nWriteLen, m_pFile);
 			}
 		}
 		else if (nPos < nCurPos)

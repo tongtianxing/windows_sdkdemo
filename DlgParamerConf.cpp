@@ -193,7 +193,7 @@ void CDlgParamerConf::DoDataCB(const char* pBuf, int nLen, long nPos)
 			{
 				std::vector<char> VecBuf;
 				VecBuf.resize(nWriteLen);
-				int nFileWriteLen = fwrite(&VecBuf[0], 1, nWriteLen, m_pFile);
+				int nFileWriteLen = (int)fwrite(&VecBuf[0], 1, nWriteLen, m_pFile);
 			}
 		}
 		else if (nPos < nCurPos)
@@ -357,7 +357,7 @@ LRESULT CDlgParamerConf::OnGetParameterMsg(WPARAM wParam, LPARAM lParam)
 		
 			ParmerConfError();
 			m_bGetParamSuc = FALSE;
-			m_nGetParamResult = lParam;
+			m_nGetParamResult = (int)lParam;
 			m_pDlgLoading->CloseLoading();
 			SetEvent(m_hEventParam);
 		}
@@ -440,7 +440,7 @@ LRESULT CDlgParamerConf::OnUpLoadMsg(WPARAM wParam, LPARAM lParam)
 			StopUpload();
 
 			m_bGetParamSuc = FALSE;
-			m_nGetParamResult = lParam;
+			m_nGetParamResult = (int)lParam;
 			m_pDlgLoading->CloseLoading();
 			SetEvent(m_hEventParam);
 		}
@@ -504,7 +504,7 @@ LRESULT CDlgParamerConf::OnMsgPromote(WPARAM wParam, LPARAM lParam)
 				GetDlgItem(IDC_ST_READ_TIP)->SetWindowText(LOADSTRINGEX(ID_STR_DLG_PARAMER_DOWN_FAILT));//下传配置参数文件失败!
 				
 				m_bGetParamSuc = FALSE;
-				m_nGetParamResult = lParam;
+				m_nGetParamResult = (int)lParam;
 				m_pDlgLoading->CloseLoading();
 			}
 			break;
@@ -800,7 +800,7 @@ BOOL CDlgParamerConf::DoTransparentConfig( int nType, MDVRConfigDataEx_S* lpInCo
 		CDlgDevList dlg;
 		dlg.SetMultiSelect(FALSE);
 		dlg.SetShowChan(FALSE);
-		int nRet = dlg.DoModal();
+		INT_PTR nRet = dlg.DoModal();
 		if (IDOK == nRet)
 		{
 			int nVehiID = dlg.GetSelectDevice();
@@ -1060,7 +1060,7 @@ void CDlgParamerConf::ShowDlgLoading(BOOL bShow)
 	m_pDlgLoading->SetShow(bShow);
 }
 
-void CDlgParamerConf::OnTimer(UINT nIDEvent) 
+void CDlgParamerConf::OnTimer(UINT_PTR nIDEvent) 
 {
 	
 	if (TIMER_SHOW_DISPLAY == nIDEvent)

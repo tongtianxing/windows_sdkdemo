@@ -476,7 +476,7 @@ void CClientdemoDlg::DoFUNVehiRunning(GPSVehicleState_S* pVecRun)
 	}
 	else
 	{
-		strName.Format(_T("%s"), pVecRun->szDevIDNO);
+		strName.Format(_T("%s"), CString(pVecRun->szDevIDNO));
 	}
 	CString strTemperature;
 	FormatTemperatureInfo(pVecRun->Gps, pVehi, strTemperature);
@@ -609,7 +609,7 @@ void CClientdemoDlg::PreviewSelectNode(BOOL bMain)
 			CVehicleBase* pVehi = (CVehicleBase*)m_treeDev.GetItemData(hDevice);
 			if (pVehi != NULL)
 			{
-				int nChan = m_treeDev.GetItemData(hItem);
+				int nChan = (int)m_treeDev.GetItemData(hItem);
 				CDevBase* pDevice = pVehi->GetDevByChn(nChan);
 				if (pDevice != NULL)
 				{
@@ -773,7 +773,7 @@ LRESULT CClientdemoDlg::ShowDevTran( GPSAlarmTPD_S* pNewAlarm )
 		std::vector<std::string> vecStr;		
 		STRINGSplit(pNewAlarm->TPD.Data.cBuffer, '|', vecStr);
 		// number of people
-		int nCurPeopleNum = vecStr.size();
+		int nCurPeopleNum = (int)vecStr.size();
 	}
 	ASSERT(pNewAlarm != NULL);
 	CDevBase* pDevice = CVMgrDevice::GetInstance()->FindDvsDeviceByIDNO(pNewAlarm->szDevIDNO);
@@ -909,7 +909,7 @@ void CClientdemoDlg::OnBtnSearch()
 	char szDevIDNO[32] = {0};
 	strncpy_s(szDevIDNO, CStringA(strSearchDevIDNO), 31);
 
-	int nLocation = m_cmbLocation.GetItemData(m_cmbLocation.GetCurSel());
+	int nLocation = (int)m_cmbLocation.GetItemData(m_cmbLocation.GetCurSel());
 
 	if (CSvrVer::GetInstance()->IsSvrVerV7() )
 	{
@@ -934,12 +934,12 @@ void CClientdemoDlg::OnBtnSearch()
 		if (NULL == m_pFileSearch)
 		{
 			m_pFileSearch = CSearch::GetNewRecSearch(nLocation, 
-													m_cmbFileType.GetItemData(m_cmbFileType.GetCurSel()));
+				(int)m_cmbFileType.GetItemData(m_cmbFileType.GetCurSel()));
 			m_pFileSearch->SetWndAndMsg(this->GetSafeHwnd(), WM_MSG_SEARCH_MSG, WM_MSG_SEARCH_FILE);
 #if 1
 			m_pFileSearch->StartSearch(szDevIDNO, //CStringA(strSearchDevIDNO), 
-				m_cmbSearchChannel.GetItemData(m_cmbSearchChannel.GetCurSel()), 
-				m_cmbFileAttribute.GetItemData(m_cmbFileAttribute.GetCurSel()), 
+				(int)m_cmbSearchChannel.GetItemData(m_cmbSearchChannel.GetCurSel()),
+				(int)m_cmbFileAttribute.GetItemData(m_cmbFileAttribute.GetCurSel()),
 				m_DataBeg.GetYear(), m_DataBeg.GetMonth(), m_DataBeg.GetDay(), 0, 86399);
 #else
 			m_pFileSearch->StartSearchEx(szDevIDNO, //CStringA(strSearchDevIDNO), 
@@ -1062,7 +1062,7 @@ LRESULT CClientdemoDlg::OnMsgSearchFile(WPARAM wParam, LPARAM lParam)
 	m_lstSearch.SetItemText(nIndex, 4, strChn);
 	m_lstSearch.SetItemText(nIndex, 5, GetFileSize(pNewFile->nFileLen));
 	m_lstSearch.SetItemText(nIndex, 6, CString(pNewFile->szFile));
-	m_lstSearch.SetItemData(nIndex, (DWORD)pNewFile);
+	m_lstSearch.SetItemData(nIndex, (DWORD_PTR)pNewFile);
 	return 0;
 }
 
@@ -1446,7 +1446,7 @@ void CClientdemoDlg::InitDevCombox()
 		if (pVehi != NULL)
 		{
 			m_cmbDev.InsertString(nIndex, pVehi->GetShowName());
-			m_cmbDev.SetItemData(nIndex, DWORD(pVehi));
+			m_cmbDev.SetItemData(nIndex, DWORD_PTR(pVehi));
 			nIndex++;
 		}
 		iterB++;
@@ -1755,7 +1755,7 @@ LRESULT CClientdemoDlg::OnTQMSG(WPARAM wParam, LPARAM lParam)
 // 	MDVRNET_StopTransparentQuery(m_lTransparentQuery);
 // 	MDVRNET_CloseTransparentQuery(m_lTransparentQuery); m_lTransparentQuery = NULL;
 // 	return 0;
- 	int nMsg = wParam;
+ 	int nMsg = (int)wParam;
 	if (NULL != m_lQueryTransparent)
 	{
 		switch(nMsg)
@@ -1866,7 +1866,7 @@ void CClientdemoDlg::ShnapshotTimerDataCB(const char* szDevIDNO, int nChn, const
 //	LOG_TRACE(LOG_LEVEL_HIGHEST, "Shnapshot %s-%d", szDevIDNO, nChn);
 }
 
-void CClientdemoDlg::OnTimer(UINT nIDEvent) 
+void CClientdemoDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	if (TIMER_DOWNLOAD == nIDEvent)
 	{
@@ -2084,6 +2084,7 @@ void CClientdemoDlg::DownFile(BOOL bResumeDown)
 				//m_strFileDown.Format(_T("c:/BOCOM_%04d_%02d_%02d %02d_%02d_%02d.MPG"), tm.wYear, tm.wMonth, tm.wDay, tm.wHour, tm.wMinute, tm.wSecond);
 				char szFile[MAX_PATH] = {0};
 				AVDEC_MakeRecName(AVDEC_GetDecHandle(), &tm, &tm, pFile->nChn, pFile->nFileType, szFile);
+				AVDEC_ChangeFileExtension(AVDEC_GetDecHandle(), szFile, AVDEC_FILE_FORMAT_MP4);
 
 				m_strFileDown = strPath + CString(szFile);
 			}
@@ -2238,7 +2239,7 @@ void CClientdemoDlg::OnMainFront()
 			CVehicleBase* pVehi = (CVehicleBase*)m_treeDev.GetItemData(hDevice);
 			if (pVehi != NULL)
 			{
-				int nChan = m_treeDev.GetItemData(hItem);
+				int nChan = (int)m_treeDev.GetItemData(hItem);
 				CDevBase* pDevice = pVehi->GetDevByChn(nChan);
 				if (pDevice != NULL)
 				{
@@ -2369,7 +2370,7 @@ void CClientdemoDlg::OnBnClickedButtonAudioStart()
 	}
 	CVehicleBase* pVehi = (CVehicleBase*)m_cmbDev.GetItemData(nIndex);
 
-	int nAudio = m_cmbAudio.GetItemData(m_cmbAudio.GetCurSel());
+	int nAudio = (int)m_cmbAudio.GetItemData(m_cmbAudio.GetCurSel());
 	CString strDevIDNO(pVehi->GetMainDevice()->GetDevIDNOForChar());
 	VOICETalkback()->StartTalkback(strDevIDNO, 0, 
 		(AUDIO_TYPE_TALKBACK == nAudio) ? true : false);
@@ -2383,7 +2384,7 @@ void CClientdemoDlg::OnBnClickedButtonAudioStart()
 void CClientdemoDlg::OnBnClickedButtonAudioStop()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	int nAudio = m_cmbAudio.GetItemData(m_cmbAudio.GetCurSel());
+	int nAudio = (int)m_cmbAudio.GetItemData(m_cmbAudio.GetCurSel());
 // 	if (AUDIO_TYPE_TALKBACK == nAudio)
 // 	{
 // 		VOICETalkback()->CloseSound();

@@ -41,7 +41,7 @@ private:
 	int		m_nMonitorDevID;
 	int		m_nMonitorChan;
 	
-	long	m_lMonitor;
+	LONG_PTR	m_lMonitor;
 	HWND	m_hMonitorHwnd;
 	UINT	m_uiMonitorMsg;
 };

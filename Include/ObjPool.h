@@ -31,6 +31,7 @@ private:
 public:
 	T*		Alloc();
 	void	Free(T*);
+	void	FreeB(T*);
 	int		GetAllCount();
 	int		GetFreeCount();
 
@@ -93,11 +94,23 @@ template<typename T> void CObjPool<T>::Free(T* pTObj)
 	}
 }
 
+template<typename T> void CObjPool<T>::FreeB(T* pTObj)
+{ 
+	EnterCriticalSection(&m_cs);
+	m_lstFreeTObj.push_back(pTObj);
+	LeaveCriticalSection(&m_cs);
+
+	if (TIMEIsTimeOut(m_dwLastMgrTime, 300000)) {
+		Manage(m_uiMaxFree);
+		m_dwLastMgrTime = GetTickCount();
+	}
+}
+
 template<typename T> int CObjPool<T>::GetAllCount()
 {
 	int nFreeCount = 0;
 	EnterCriticalSection(&m_cs);
-	nFreeCount = m_mapAllTObj.size();
+	nFreeCount = (int)m_mapAllTObj.size();
 	LeaveCriticalSection(&m_cs);
 	return nFreeCount;
 }
@@ -106,7 +119,7 @@ template<typename T> int CObjPool<T>::GetFreeCount()
 {
 	int nFreeCount = 0;
 	EnterCriticalSection(&m_cs);
-	nFreeCount = m_lstFreeTObj.size();
+	nFreeCount = (int)m_lstFreeTObj.size();
 	LeaveCriticalSection(&m_cs);
 	return nFreeCount;
 }
@@ -114,7 +127,7 @@ template<typename T> int CObjPool<T>::GetFreeCount()
 template<typename T> void CObjPool<T>::Manage(unsigned int uiMaxFreeCount)
 {
 	EnterCriticalSection(&m_cs);
-	unsigned int nFreeCount = m_lstFreeTObj.size();
+	unsigned int nFreeCount = (unsigned int)m_lstFreeTObj.size();
 	if (nFreeCount > uiMaxFreeCount)
 	{
 		int nEraseCount = nFreeCount - uiMaxFreeCount;

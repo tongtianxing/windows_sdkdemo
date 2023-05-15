@@ -239,24 +239,11 @@
 				2、增加GetVideoParam用于不同通道视频编码格式不同
 46、版本  	6.1.48
 	日期:		20170905
-	修改:     	1、增加TTXNET_SetDevicePwd，可以配置设备连接服务器使用的密码
+	修改:     	1、增加集群对讲的相关接口，请使用ttxpttnetapi.h和ttxpttnetdef.h两个文件
+					在dvrnet的Makefile增加 _TTX_ENABLE_PTT_ 宏，CFLAGS += -D _TTX_ENABLE_PTT_，则为增加集群对讲的功能
+					在TTXNET_StartWork之前调用TTXPTT_SetPttAdapter，则认为同步启用ptt集群功能	
+				2、增加TTXNET_SetDevicePwd，可以配置设备连接服务器使用的密码
 					增加TTXNET_SetLoginType，设置登录类型, 为在linux上登录或者android登录
-47、版本  	6.1.49
-	日期:		20180122
-	修改:     	1、回放时判断如果是wifi网络，每次会多读取帧数进行发送
-48、版本  	6.1.50
-	日期:		20190322
-	修改:     	1、录像搜索增加返回是否支持多路回放和可以多路回放的通道的标识
-
-49、版本  	6.1.51
-	日期:		20190618
-	修改:     	1、码流切换增加标识
-50、版本  	6.1.52
-	日期:		20190803
-	修改:     	1、增加渣土车状态上报接口	TTXSlagStatus_S   及GetSlagStatus, SetSlagStatus
-50、版本  	6.1.53
-	日期:		20191205
-	修改:     	1、TTXNET_SetNetworkInfo调用时会判断网络状态是否发生变化，如果变化会自动重连
 */
 
 #ifdef __cplusplus
@@ -567,15 +554,6 @@ LIBDVRNET_API int	TTXNET_SetRealTimeMode(bool bRealTimeMode);
 * @Author: dhy 2017-06-21
 ******************************************************************************/
 LIBDVRNET_API int	TTXNET_SetUpStateInfoMode(bool bStateInfoMode);
-
-/**
- * @Description:获取多少毫秒无数据
- * @return: 返回时间差(毫秒) 
- * @Author: 
- */
-LIBDVRNET_API _u64long GetTimeNoRecvData();
-
-
 
 
 #ifdef __cplusplus

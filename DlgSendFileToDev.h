@@ -81,17 +81,17 @@ public:
 	CString m_strOldDevType;//保存上一次设备型号,字符
 
 private:
-	long	m_lUploadHandle;
+	LONG_PTR	m_lUploadHandle;
 	BOOL	m_bUploadSuc;
 	BOOL    m_bPromoteSuc;
 	GPSDEVUpgradeFile_S m_FileInfo;
 	TCHAR	m_szUploadDestFile[MAX_PATH];
 	int     m_nlpSvrID;
-	long	m_lPromoteHanle;
+	LONG_PTR	m_lPromoteHanle;
 	BOOL    m_bContinuePromote;
 	int     m_nCurRow;
 	int		m_nFailCount;
-	long    m_lOldUploadHandle;
+	LONG_PTR    m_lOldUploadHandle;
 	BOOL    m_bContinueUpload;
 	CComboBox m_cmbFlieType;
 

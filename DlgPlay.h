@@ -50,7 +50,7 @@ protected:
 	afx_msg void OnBtnStep();
 	virtual BOOL OnInitDialog();
 	afx_msg void OnDestroy();
-	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnReleasedcaptureSlider1(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnChkSound();
 	afx_msg void OnReleasedcaptureSlider2(NMHDR* pNMHDR, LRESULT* pResult);
@@ -71,7 +71,7 @@ protected:
 	void	ChangeVolume();
 
 private:
-	long	m_lPlayHandle;
+	LONG_PTR	m_lPlayHandle;
 	BOOL	m_bPause;
 	IDECFileInfo_S	m_FileInfo;
 	DWORD	m_dwSetPos;

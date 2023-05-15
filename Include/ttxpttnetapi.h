@@ -152,7 +152,7 @@ LIBTTXPTT_API int TTXPTT_RemoveTempGroup(int nGroupID);
  * @return: 0表示成功
  * @Author: afu 2017-08-30
  */
-LIBTTXPTT_API int TTXPTT_ReadGroupList(long* lpReadHandle, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_ReadGroupList(LONG_PTR* lpReadHandle, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 
 /**
  * @Description:获取群组成员列表，可以一次获取多个群组的成员
@@ -164,7 +164,7 @@ LIBTTXPTT_API int TTXPTT_ReadGroupList(long* lpReadHandle, void* pUsr, TTXPTTPfn
  * @return: 0表示成功
  * @Author: afu 2017-08-30
  */
-LIBTTXPTT_API int TTXPTT_ReadGroupMember(long* lpReadHandle, int* pArrGroupID, int nGroupCount, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_ReadGroupMember(LONG_PTR* lpReadHandle, int* pArrGroupID, int nGroupCount, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 
 /**
  * @Description: 
@@ -179,9 +179,9 @@ LIBTTXPTT_API int TTXPTT_ReadGroupMember(long* lpReadHandle, int* pArrGroupID, i
  * @return: 0表示成功
  * @Author: afu 2017-08-30
  */
-LIBTTXPTT_API int TTXPTT_UploadFile(long* lpReadHandle, int nGroupID, int nTerminalID, int nFileType, const char* szFile, int nTotalSecond, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_UploadFile(LONG_PTR* lpReadHandle, int nGroupID, int nTerminalID, int nFileType, const char* szFile, int nTotalSecond, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 //上传音频到缓存
-LIBTTXPTT_API int TTXPTT_UploadBuffer(long* lpReadHandle, int nGroupID, int nTerminalID, int nFileType, const char* pBuffer, int nBufLen, int nTotalSecond, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_UploadBuffer(LONG_PTR* lpReadHandle, int nGroupID, int nTerminalID, int nFileType, const char* pBuffer, int nBufLen, int nTotalSecond, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 
 /**
  * @Description: 
@@ -194,10 +194,10 @@ LIBTTXPTT_API int TTXPTT_UploadBuffer(long* lpReadHandle, int nGroupID, int nTer
  * @return: 0表示成功
  * @Author: afu 2017-08-30
  */
-LIBTTXPTT_API int TTXPTT_DownFile(long* lpReadHandle, const char* szUrl, const char* szSavePath, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_DownFile(LONG_PTR* lpReadHandle, const char* szUrl, const char* szSavePath, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 //下载音频到缓存中
 //通过回调的nDataType == TTX_PTT_READ_DATA_TYPE_AUDIO_FILE_BUFFER 和 (TTXPttAudioFileBuffer_S*)pData返回
-LIBTTXPTT_API int TTXPTT_DownBuffer(long* lpReadHandle, const char* szUrl, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
+LIBTTXPTT_API int TTXPTT_DownBuffer(LONG_PTR* lpReadHandle, const char* szUrl, void* pUsr, TTXPTTPfnReadInformationCB pfnReadInfoCB);
 
 /**
  * @Description:关闭获取对象
@@ -205,7 +205,7 @@ LIBTTXPTT_API int TTXPTT_DownBuffer(long* lpReadHandle, const char* szUrl, void*
  * @return: 0表示成功
  * @Author: afu 2017-08-30
  */
-LIBTTXPTT_API int TTXPTT_CloseReadHandle(long lReadHandle);
+LIBTTXPTT_API int TTXPTT_CloseReadHandle(LONG_PTR lReadHandle);
 
 /**
  * @Description:获取多少毫秒无数据

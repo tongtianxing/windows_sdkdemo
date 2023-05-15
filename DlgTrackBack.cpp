@@ -97,7 +97,7 @@ BOOL CDlgTrackBack::OnInitDialog()
 		if (pVehi != NULL)
 		{
 			m_cmbDevIDNO.InsertString(nIndex, pVehi->GetShowName());
-			m_cmbDevIDNO.SetItemData(nIndex, DWORD(pVehi));
+			m_cmbDevIDNO.SetItemData(nIndex, DWORD_PTR(pVehi));
 			nIndex ++;
 		}
 		mapDevIterB++;
@@ -396,12 +396,12 @@ int CDlgTrackBack::GetVehiRunImg(const GPSVehicleGps_S& Gps)
 		nImg = MAP_IMG_VEHICLE_ALARM;
 		return nImg;
 	}
-	else if (((Gps.uiStatus[0]>>14))&1 == 1)  //Over speed
+	else if ((((Gps.uiStatus[0]>>14))&1) == 1)  //Over speed
 	{
 		nImg = MAP_IMG_VEHICLE_ALARM;
 		return nImg;
 	}
-	else if (((Gps.uiStatus[0]>>13))&1 == 1)  //Parking
+	else if ((((Gps.uiStatus[0]>>13))&1) == 1)  //Parking
 	{
 		nImg = MAP_IMG_VEHICLE_STATIC;
 		return nImg;

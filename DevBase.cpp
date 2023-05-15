@@ -65,7 +65,7 @@ int	CDevBase::GetID()
 }
 int	CDevBase::GetChannelNum()
 {
-	return m_mapChn.size();
+	return (int)m_mapChn.size();
 }
 
 CString CDevBase::GetChnName(UINT nChn)

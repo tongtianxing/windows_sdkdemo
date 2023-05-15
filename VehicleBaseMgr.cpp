@@ -191,7 +191,7 @@ void CVehicleBaseMgr::UpdateVehiInfo(mapVehicleBase& Device, mapDevGroup& Group)
 
 	{
 		//Update
-		int nTmp = Group.size();
+		int nTmp = (int)Group.size();
 		mapDevGroupIter IterB = Group.begin();
 		mapDevGroupIter IterE = Group.end();
 		while (IterB != IterE)
@@ -243,7 +243,7 @@ void CVehicleBaseMgr::UpdateVehiInfo(mapDevGroup& Group)
 
 	{
 		//Update
-		int nTmp = Group.size();
+		int nTmp = (int)Group.size();
 		mapDevGroupIter IterB = Group.begin();
 		mapDevGroupIter IterE = Group.end();
 		while (IterB != IterE)
@@ -428,7 +428,7 @@ BOOL CVehicleBaseMgr::GetGroupInfo(int nGroupID, GPSDEVGroup_S& DEVGroup, mapIDI
 int CVehicleBaseMgr::GetGroup(mapDevGroup& mapGroup)
 {
 	mapGroup = m_mapDevGroup;
-	return mapGroup.size();
+	return (int)mapGroup.size();
 }
 
 void CVehicleBaseMgr::GetGroupDev(int nGroupID, mapVehicleBase& mapDev)
@@ -527,14 +527,14 @@ int	CVehicleBaseMgr::GetAllDevMap(mapVehicleBase& mapDev/*, int nOnline, int nDe
 		++ iterB;
 	}
 	
-	return mapDev.size();
+	return (int)mapDev.size();
 }
 
 
 void CVehicleBaseMgr::GetAllDev(GPSDeviceIDNO_S** ppDevice, int& nCount)
 {
 	CAutoLock	m_cs(m_LockDevice);
-	nCount = m_mapVehicleBase.size();
+	nCount = (int)m_mapVehicleBase.size();
 	if (nCount > 0)
 	{
 		*ppDevice = new GPSDeviceIDNO_S[nCount];
@@ -635,7 +635,7 @@ CDevBase* CVehicleBaseMgr::FindDevByVehicleID(int nVehicleID)
 
 int	CVehicleBaseMgr::GetDeviceNum()
 {
-	return m_mapVehicleBase.size();
+	return (int)m_mapVehicleBase.size();
 }
 
 int	CVehicleBaseMgr::GetOnlineDeviceNum()
@@ -692,7 +692,7 @@ void CVehicleBaseMgr::InsertChildGroupAndDevice(CTreeCtrl& tree, HTREEITEM hPare
 		if (nParentGroupID == pDevGroup->GetGroupInfo()->nParent)
 		{
 			HTREEITEM hNew = tree.InsertItem(pDevGroup->GetGroupName(), hParentItem);
-			tree.SetItemData(hNew, (DWORD)pDevGroup);
+			tree.SetItemData(hNew, (DWORD_PTR)pDevGroup);
 			InsertChildGroupAndDevice(tree, hNew, pDevGroup->GetGroupInfo()->nID, bInsertChan, bShowAlarm, bShowAlarmOnly);
 			tree.Expand(hNew, TVE_EXPAND);
 		}
@@ -725,7 +725,7 @@ void CVehicleBaseMgr::InsertChildDevice(CTreeCtrl& tree, HTREEITEM hParentItem, 
 		{
 			HTREEITEM hNew = NULL;
 			hNew = tree.InsertItem(pDevice->GetShowName(), hParentItem);
-			tree.SetItemData(hNew, (DWORD)pDevice);
+			tree.SetItemData(hNew, (DWORD_PTR)pDevice);
 			if (bInsertChan)
 			{
 				for (int i = 0; i < pDevice->GetChannelNum(); ++ i)

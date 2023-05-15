@@ -112,9 +112,9 @@ void CDlgAueCheckedSetup::FillGetReq( char* pBuf, int& nSize )
 
 void CDlgAueCheckedSetup::FillSetReq( char* pBuf, int& nSize )
 {
-	int nCheckAlcohol = m_cmbAlcohol.GetItemData(m_cmbAlcohol.GetCurSel());
-	int nCheckFingerprint = m_cmbFingerprint.GetItemData(m_cmbFingerprint.GetCurSel());
-	int nCheckFace = m_cmbFace.GetItemData(m_cmbFace.GetCurSel());
+	int nCheckAlcohol = (int)m_cmbAlcohol.GetItemData(m_cmbAlcohol.GetCurSel());
+	int nCheckFingerprint = (int)m_cmbFingerprint.GetItemData(m_cmbFingerprint.GetCurSel());
+	int nCheckFace = (int)m_cmbFace.GetItemData(m_cmbFace.GetCurSel());
 	
 	CString str;
 	str.Format(_T("<Parameter><LOGIN_CONFIG Action=\"set\" alcohol_checked=\"%d\" fingerprint_checked=\"%d\" face_checked=\"%d\"></LOGIN_CONFIG></Parameter>"),

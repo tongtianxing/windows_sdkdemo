@@ -52,7 +52,7 @@ private:
 	void	CloseGetParamHandle();
 	
 	void EnableCtrl(BOOL bEnable);
-	long	m_lParamHandle;
+	LONG_PTR	m_lParamHandle;
 };
 
 //{{AFX_INSERT_LOCATION}}

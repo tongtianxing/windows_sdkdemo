@@ -75,7 +75,7 @@ void CDlgPlayback::Stop()
 	m_dlgRecPlayback.Stop();
 }
 
-void CDlgPlayback::OnTimer(UINT nIDEvent) 
+void CDlgPlayback::OnTimer(UINT_PTR nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	KillTimer(nIDEvent);
